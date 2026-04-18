@@ -61,14 +61,14 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--gray-600);
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
             -webkit-background-clip: text;
@@ -85,17 +85,19 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav a {
             color: var(--gray-100);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 11px;
             position: relative;
             transition: color 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-weight: 500;
         }
 
@@ -118,8 +120,32 @@
             width: 100%;
         }
 
+        @media (max-width: 768px) {
+            .nav {
+                flex-wrap: wrap;
+                padding: 0.6rem 0.8rem;
+            }
+
+            .logo {
+                font-size: 12px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            nav ul {
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 10px;
+                letter-spacing: 0.3px;
+            }
+        }
+
         .hero {
-            margin-top: 60px;
+            margin-top: 50px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
