@@ -3,1385 +3,915 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#120b0f">
   <meta name="description" content="Portfólio de Murilo Eduardo Lima, Analista de Dados Júnior com foco em Python, SQL, Power BI, automação, qualidade de dados e melhoria de processos.">
-  <meta property="og:title" content="Murilo Eduardo Lima | Dados, Automação & Tecnologia">
-  <meta property="og:description" content="Dados confiáveis, processos melhores e automações que tiram o trabalho repetitivo do caminho.">
+  <meta property="og:title" content="Murilo Eduardo Lima | Dados, Automação & Cultura">
+  <meta property="og:description" content="Dados, automação, processo e cultura em um portfólio com identidade visual própria.">
   <meta property="og:type" content="website">
   <title>Murilo Eduardo Lima | Analista de Dados Júnior</title>
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23120b0f' stroke='%23c7a55b' stroke-width='5'/%3E%3Ccircle cx='50' cy='50' r='27' fill='none' stroke='%23c7a55b' stroke-width='3' opacity='.6'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%235a1028' stroke='%23f4efe7' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23f4efe7'/%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --ink: #111111;
-      --ink-soft: #272727;
-      --paper: #f1eadc;
-      --paper-2: #e9dfcd;
-      --red: #df352b;
-      --blue: #1d5fd1;
-      --yellow: #f1c843;
-      --green: #2d8a65;
-      --white: #fffdf6;
-      --muted: #6e675d;
-      --line: rgba(17, 17, 17, .18);
-      --shadow: 9px 9px 0 var(--ink);
-      --max: 1180px;
+    :root{
+      --bg:#120b0f;
+      --bg-2:#1b1017;
+      --panel:#21131b;
+      --wine:#5a1028;
+      --wine-2:#3d0c1d;
+      --wine-3:#7f1638;
+      --cream:#f4efe7;
+      --cream-2:#e9dfd2;
+      --gold:#c7a55b;
+      --gold-2:#e5c879;
+      --muted:#b6aaa0;
+      --ink:#120b0f;
+      --line:rgba(244,239,231,.16);
+      --max:1180px;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
       background:
-        radial-gradient(circle at 12% 18%, rgba(223,53,43,.08) 0 3px, transparent 4px),
-        radial-gradient(circle at 88% 34%, rgba(29,95,209,.08) 0 2px, transparent 3px),
-        linear-gradient(90deg, rgba(17,17,17,.025) 1px, transparent 1px),
-        linear-gradient(rgba(17,17,17,.025) 1px, transparent 1px),
-        var(--paper);
-      background-size: auto, auto, 28px 28px, 28px 28px, auto;
-      color: var(--ink);
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    ::selection {
-      background: var(--yellow);
-      color: var(--ink);
-    }
-
-    .skip-link {
-      position: fixed;
-      left: 12px;
-      top: -80px;
-      z-index: 9999;
-      background: var(--ink);
-      color: var(--white);
-      padding: 10px 14px;
-      text-decoration: none;
-    }
-
-    .skip-link:focus {
-      top: 12px;
-    }
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 20;
-      opacity: .055;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 2px solid var(--ink);
-      background: rgba(241,234,220,.94);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      width: min(var(--max), calc(100% - 32px));
-      margin: auto;
-      min-height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-family: "DM Mono", monospace;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: -.04em;
-      white-space: nowrap;
-    }
-
-    .brand b {
-      display: inline-block;
-      padding: 2px 6px;
-      background: var(--ink);
-      color: var(--paper);
-      transform: rotate(-2deg);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-family: "DM Mono", monospace;
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 3px;
-      background: var(--red);
-      transform: rotate(-2deg);
-      transition: width .2s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after {
-      width: 100%;
-    }
-
-    .hero {
-      min-height: calc(100vh - 66px);
-      width: min(var(--max), calc(100% - 32px));
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      align-items: center;
-      gap: clamp(36px, 6vw, 84px);
-      padding: 80px 0 74px;
-      position: relative;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      font-family: "DM Mono", monospace;
-      text-transform: uppercase;
-      font-size: .78rem;
-      letter-spacing: .08em;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 36px;
-      height: 7px;
-      background: var(--red);
-      border: 1px solid var(--ink);
-      transform: rotate(-4deg);
-    }
-
-    h1 {
-      font-size: clamp(3.6rem, 8.5vw, 8.6rem);
-      line-height: .82;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-      max-width: 820px;
-    }
-
-    .name-line {
-      display: block;
-    }
-
-    .name-line:nth-child(2) {
-      color: var(--blue);
-      -webkit-text-stroke: 2px var(--ink);
-      text-shadow: 5px 5px 0 var(--yellow);
-      transform: rotate(-1.2deg);
-      transform-origin: left center;
-    }
-
-    .hero-role {
-      margin-top: 24px;
-      font-size: clamp(1.15rem, 2.4vw, 1.8rem);
-      font-weight: 600;
-      max-width: 760px;
-    }
-
-    .hero-role .marker {
-      background: linear-gradient(transparent 58%, var(--yellow) 58%);
-      padding: 0 3px;
-    }
-
-    .hero-text {
-      margin-top: 18px;
-      max-width: 680px;
-      font-size: 1.02rem;
-      color: var(--ink-soft);
-    }
-
-    .hero-actions {
-      margin-top: 34px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border: 2px solid var(--ink);
-      background: var(--ink);
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 5px 5px 0 var(--blue);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      transform: translate(3px, 3px) rotate(-1deg);
-      box-shadow: 2px 2px 0 var(--blue);
-    }
-
-    .btn.alt {
-      background: var(--paper);
-      color: var(--ink);
-      box-shadow: 5px 5px 0 var(--red);
-    }
-
-    .hero-note {
-      margin-top: 28px;
-      font-family: "Permanent Marker", cursive;
-      font-size: 1rem;
-      transform: rotate(-1.5deg);
-      display: inline-block;
-    }
-
-    .art-board {
-      min-height: 525px;
-      border: 3px solid var(--ink);
-      background: var(--white);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      transform: rotate(1.4deg);
-      isolation: isolate;
-    }
-
-    .art-board::before,
-    .art-board::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(.2px);
-      z-index: -1;
-    }
-
-    .art-board::before {
-      width: 220px;
-      height: 220px;
-      background: var(--red);
-      top: -78px;
-      right: -54px;
-    }
-
-    .art-board::after {
-      width: 175px;
-      height: 175px;
-      background: var(--blue);
-      left: -70px;
-      bottom: -72px;
-    }
-
-    .chart-title {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      font-family: "DM Mono", monospace;
-      font-size: .78rem;
-      text-transform: uppercase;
-      background: var(--yellow);
-      border: 2px solid var(--ink);
-      padding: 5px 9px;
-      transform: rotate(-2deg);
-    }
-
-    .bars {
-      position: absolute;
-      inset: 96px 34px 110px 54px;
-      display: flex;
-      gap: 16px;
-      align-items: end;
-      border-left: 3px solid var(--ink);
-      border-bottom: 3px solid var(--ink);
-      padding: 0 0 0 14px;
-    }
-
-    .bar {
-      flex: 1;
-      border: 2px solid var(--ink);
-      min-width: 18px;
-      position: relative;
-      animation: rise .9s ease both;
-    }
-
-    .bar:nth-child(1) { height: 38%; background: var(--yellow); }
-    .bar:nth-child(2) { height: 72%; background: var(--red); animation-delay: .08s; }
-    .bar:nth-child(3) { height: 54%; background: var(--blue); animation-delay: .16s; }
-    .bar:nth-child(4) { height: 87%; background: var(--ink); animation-delay: .24s; }
-    .bar:nth-child(5) { height: 67%; background: var(--green); animation-delay: .32s; }
-
-    @keyframes rise {
-      from { transform: scaleY(.05); transform-origin: bottom; }
-      to { transform: scaleY(1); transform-origin: bottom; }
-    }
-
-    .scribble {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .scribble path {
-      fill: none;
-      stroke: var(--ink);
-      stroke-width: 5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .art-tag {
-      position: absolute;
-      font-family: "Permanent Marker", cursive;
-      color: var(--ink);
-      line-height: 1.05;
-      text-align: center;
-    }
-
-    .art-tag.one {
-      right: 25px;
-      bottom: 45px;
-      font-size: 1.2rem;
-      transform: rotate(-8deg);
-    }
-
-    .art-tag.two {
-      left: 28px;
-      top: 52%;
-      color: var(--white);
-      background: var(--ink);
-      padding: 6px 10px;
-      transform: rotate(-88deg) translateX(-50%);
-      transform-origin: left center;
-      font-family: "DM Mono", monospace;
-      font-size: .72rem;
-    }
-
-    .section {
-      width: min(var(--max), calc(100% - 32px));
-      margin: auto;
-      padding: 96px 0;
-      border-top: 2px solid var(--ink);
-      position: relative;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: .45fr 1fr;
-      gap: 28px;
-      align-items: end;
-      margin-bottom: 52px;
-    }
-
-    .section-kicker {
-      font-family: "DM Mono", monospace;
-      text-transform: uppercase;
-      font-size: .76rem;
-      letter-spacing: .08em;
-      color: var(--muted);
-    }
-
-    h2 {
-      font-size: clamp(2.45rem, 5vw, 5.3rem);
-      line-height: .92;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-    }
-
-    .section-head h2 .stroke-word {
-      color: var(--paper);
-      -webkit-text-stroke: 2px var(--ink);
-      text-shadow: 4px 4px 0 var(--red);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 34px;
-    }
-
-    .about-copy {
-      font-size: clamp(1.12rem, 2.1vw, 1.55rem);
-      line-height: 1.5;
-      max-width: 750px;
-    }
-
-    .about-copy strong {
-      background: linear-gradient(transparent 62%, rgba(241,200,67,.85) 62%);
-    }
-
-    .data-manifesto {
-      border: 3px solid var(--ink);
-      background: var(--blue);
-      color: var(--white);
-      padding: 28px;
-      box-shadow: 8px 8px 0 var(--ink);
-      transform: rotate(-1deg);
-    }
-
-    .data-manifesto span {
-      display: block;
-      font-family: "DM Mono", monospace;
-      font-size: .72rem;
-      text-transform: uppercase;
-      opacity: .8;
-      margin-bottom: 16px;
-    }
-
-    .data-manifesto p {
-      font-family: "Permanent Marker", cursive;
-      font-size: clamp(1.45rem, 3vw, 2.3rem);
-      line-height: 1.18;
-    }
-
-    .capabilities {
-      margin-top: 54px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .cap {
-      min-height: 190px;
-      padding: 22px;
-      border: 2px solid var(--ink);
-      background: rgba(255,253,246,.52);
-      position: relative;
-      overflow: hidden;
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    .cap:hover {
-      transform: translateY(-5px) rotate(-.5deg);
-      background: var(--white);
-    }
-
-    .cap-num {
-      font-family: "DM Mono", monospace;
-      font-size: .73rem;
-      color: var(--muted);
-    }
-
-    .cap h3 {
-      margin: 35px 0 9px;
-      font-size: 1.2rem;
-      line-height: 1.05;
-      text-transform: uppercase;
-    }
-
-    .cap p {
-      font-size: .9rem;
-      color: var(--ink-soft);
-    }
-
-    .cap::after {
-      content: "";
-      position: absolute;
-      width: 34px;
-      height: 7px;
-      right: 16px;
-      top: 16px;
-      background: var(--red);
-      transform: rotate(-8deg);
-    }
-
-    .cap:nth-child(2)::after { background: var(--blue); }
-    .cap:nth-child(3)::after { background: var(--yellow); }
-    .cap:nth-child(4)::after { background: var(--green); }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 22px;
-    }
-
-    .project {
-      border: 3px solid var(--ink);
-      background: var(--white);
-      padding: 28px;
-      min-height: 340px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 7px 7px 0 var(--ink);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .project:hover {
-      transform: translate(3px,3px) rotate(-.35deg);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-
-    .project.large { grid-column: span 7; }
-    .project.small { grid-column: span 5; }
-    .project.full { grid-column: span 12; min-height: 290px; }
-
-    .project.red { background: var(--red); color: var(--white); }
-    .project.blue { background: var(--blue); color: var(--white); }
-    .project.yellow { background: var(--yellow); }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .project-index {
-      font-family: "DM Mono", monospace;
-      font-size: .75rem;
-      border: 2px solid currentColor;
-      padding: 4px 7px;
-    }
-
-    .project-type {
-      font-family: "DM Mono", monospace;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      font-size: .68rem;
-      text-align: right;
-    }
-
-    .project h3 {
-      margin-top: 38px;
-      font-size: clamp(1.75rem, 3.2vw, 3rem);
-      line-height: .95;
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-      max-width: 650px;
-    }
-
-    .project p {
-      margin-top: 18px;
-      max-width: 760px;
-      font-size: .98rem;
-    }
-
-    .project-bottom {
-      margin-top: auto;
-      padding-top: 28px;
-      display: flex;
-      gap: 10px;
-      align-items: end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .tag {
-      font-family: "DM Mono", monospace;
-      border: 1.5px solid currentColor;
-      padding: 4px 8px;
-      font-size: .68rem;
-      text-transform: uppercase;
-    }
-
-    .project-link {
-      font-weight: 700;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-      white-space: nowrap;
-    }
-
-    .project-link:hover {
-      text-decoration-style: wavy;
-    }
-
-    .privacy-note {
-      margin-top: 24px;
-      font-family: "DM Mono", monospace;
-      font-size: .76rem;
-      color: var(--muted);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 18px;
-      position: relative;
-    }
-
-    .job {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 24px;
-      border-top: 2px solid var(--ink);
-      padding: 28px 0 10px;
-    }
-
-    .job:first-child {
-      border-top-width: 3px;
-    }
-
-    .job-date {
-      font-family: "DM Mono", monospace;
-      font-size: .74rem;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .job h3 {
-      font-size: clamp(1.55rem, 3vw, 2.65rem);
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-    }
-
-    .company {
-      margin-top: 7px;
-      font-weight: 700;
-      color: var(--blue);
-    }
-
-    .job ul {
-      margin-top: 18px;
-      padding-left: 20px;
-      max-width: 820px;
-    }
-
-    .job li {
-      margin-bottom: 8px;
-    }
-
-    .skills-wrap {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .skill-block {
-      border: 2px solid var(--ink);
-      padding: 26px;
-      background: rgba(255,253,246,.55);
-      min-height: 240px;
-    }
-
-    .skill-block:nth-child(2) {
-      background: var(--ink);
-      color: var(--white);
-      transform: rotate(-.7deg);
-    }
-
-    .skill-block:nth-child(3) {
-      background: var(--yellow);
-      transform: rotate(.7deg);
-    }
-
-    .skill-block h3 {
-      font-size: 1.25rem;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .skill-block ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-block li {
-      font-family: "DM Mono", monospace;
-      font-size: .76rem;
-      padding: 5px 8px;
-      border: 1.5px solid currentColor;
-    }
-
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 13px;
-    }
-
-    .cert {
-      min-height: 120px;
-      border: 2px solid var(--ink);
-      background: var(--white);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .cert span {
-      font-family: "DM Mono", monospace;
-      font-size: .66rem;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .cert strong {
-      line-height: 1.12;
-    }
-
-    .culture {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .culture-copy {
-      border: 3px solid var(--ink);
-      background: var(--ink);
-      color: var(--white);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .culture-copy h3 {
-      font-family: "Permanent Marker", cursive;
-      color: var(--yellow);
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 1;
-      transform: rotate(-2deg);
-    }
-
-    .culture-copy p {
-      margin-top: 24px;
-      max-width: 560px;
-      color: #e8e1d4;
-    }
-
-    .culture-wall {
-      border: 3px solid var(--ink);
+        radial-gradient(circle at 20% 10%, rgba(90,16,40,.18), transparent 32%),
+        radial-gradient(circle at 85% 30%, rgba(199,165,91,.09), transparent 28%),
+        linear-gradient(180deg,var(--bg) 0%, #0d080b 100%);
+      color:var(--cream);
+      font-family:"Space Grotesk",system-ui,sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:999;
+      opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode:screen;
+    }
+
+    a{color:inherit}
+    ::selection{background:var(--gold);color:var(--ink)}
+    .skip-link{position:fixed;left:12px;top:-80px;z-index:5000;background:var(--cream);color:var(--ink);padding:10px 14px;text-decoration:none}
+    .skip-link:focus{top:12px}
+
+    .shell{width:min(var(--max),calc(100% - 34px));margin-inline:auto}
+
+    .topbar{
+      position:sticky;top:0;z-index:200;
+      backdrop-filter:blur(16px);
+      background:rgba(18,11,15,.88);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-family:"DM Mono",monospace;font-size:.82rem;letter-spacing:.02em}
+    .vinyl-mini{
+      width:34px;height:34px;border-radius:50%;
+      border:2px solid var(--gold);
       background:
-        linear-gradient(126deg, transparent 0 42%, var(--red) 42% 47%, transparent 47%),
-        linear-gradient(19deg, transparent 0 63%, var(--blue) 63% 69%, transparent 69%),
-        var(--white);
-      min-height: 340px;
-      position: relative;
-      overflow: hidden;
+        radial-gradient(circle,var(--cream) 0 4px,var(--wine) 5px 10px,transparent 11px),
+        repeating-radial-gradient(circle at center,#161014 0 2px,#26161e 3px 4px);
+      box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;
+      transition:transform .5s ease;
+    }
+    .brand:hover .vinyl-mini{transform:rotate(210deg)}
+    .brand strong{color:var(--gold)}
+
+    .nav-links{list-style:none;display:flex;gap:18px;align-items:center}
+    .nav-links a,.recruiter-btn{
+      font-family:"DM Mono",monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+      text-decoration:none;color:var(--cream-2);background:none;border:0;cursor:pointer;
+    }
+    .nav-links a:hover,.recruiter-btn:hover{color:var(--gold)}
+    .recruiter-btn{
+      border:1px solid var(--gold);padding:9px 11px;border-radius:999px;color:var(--gold)
     }
 
-    .culture-word {
-      position: absolute;
-      font-family: "Permanent Marker", cursive;
-      font-size: clamp(1.4rem, 4vw, 3.5rem);
+    .hero{
+      min-height:calc(100vh - 70px);
+      display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(34px,6vw,82px);
+      align-items:center;padding:78px 0 74px;position:relative;
     }
 
-    .culture-word:nth-child(1) { top: 10%; left: 8%; transform: rotate(-9deg); }
-    .culture-word:nth-child(2) { top: 28%; right: 8%; transform: rotate(6deg); color: var(--red); }
-    .culture-word:nth-child(3) { bottom: 14%; left: 12%; transform: rotate(4deg); color: var(--blue); }
-    .culture-word:nth-child(4) { bottom: 9%; right: 11%; transform: rotate(-8deg); }
-
-    .contact {
-      padding-bottom: 120px;
+    .hero::before{
+      content:"DATA / RAP / PROCESS / CULTURE / AUTOMATION";
+      position:absolute;left:-6vw;top:19%;font-family:"DM Mono",monospace;font-size:.67rem;letter-spacing:.2em;
+      color:rgba(244,239,231,.12);transform:rotate(-90deg);transform-origin:left top;
     }
 
-    .contact-box {
-      border: 3px solid var(--ink);
-      background: var(--red);
-      color: var(--white);
-      padding: clamp(30px, 6vw, 68px);
-      box-shadow: 10px 10px 0 var(--ink);
-      position: relative;
-      overflow: hidden;
+    .eyebrow{
+      font-family:"DM Mono",monospace;text-transform:uppercase;font-size:.74rem;letter-spacing:.12em;color:var(--gold);
+      margin-bottom:19px;display:flex;align-items:center;gap:10px;
+    }
+    .eyebrow::before{content:"";width:36px;height:2px;background:var(--gold)}
+
+    h1{
+      font-size:clamp(3.8rem,8.4vw,8.3rem);
+      line-height:.84;letter-spacing:-.075em;text-transform:uppercase;font-weight:700;
+    }
+    h1 .ghost{
+      color:transparent;-webkit-text-stroke:1.8px var(--cream);text-shadow:5px 5px 0 var(--wine);
+    }
+    h1 .gold{color:var(--gold)}
+    .hero-role{font-size:clamp(1.14rem,2.2vw,1.65rem);margin-top:26px;max-width:720px}
+    .hero-role b{color:var(--gold)}
+    .hero-text{margin-top:18px;max-width:680px;color:var(--muted);font-size:1rem}
+
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;
+      border:1px solid var(--gold);text-decoration:none;font-weight:700;background:var(--gold);color:var(--ink);
+      transition:.18s ease;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--wine)}
+    .btn.alt{background:transparent;color:var(--cream);border-color:rgba(244,239,231,.36)}
+    .btn.alt:hover{border-color:var(--gold);color:var(--gold)}
+
+    .scribble-note{
+      font-family:"Caveat",cursive;color:var(--cream);font-size:1.35rem;margin-top:26px;display:inline-block;
+      transform:rotate(-2deg);opacity:.9
     }
 
-    .contact-box h2 {
-      max-width: 880px;
+    .hero-art{position:relative;min-height:560px}
+    .poster{
+      position:absolute;inset:26px 10px 18px 18px;background:var(--cream);color:var(--ink);
+      border:2px solid var(--gold);box-shadow:var(--shadow);transform:rotate(1.1deg);overflow:hidden;
+    }
+    .poster::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(115deg,transparent 0 61%,rgba(90,16,40,.92) 61% 68%,transparent 68%),
+        linear-gradient(18deg,transparent 0 72%,rgba(199,165,91,.78) 72% 77%,transparent 77%);
+      pointer-events:none;
+    }
+    .poster-title{
+      position:absolute;top:28px;left:26px;font-family:"Caveat",cursive;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.78;
+      transform:rotate(-4deg);z-index:3
+    }
+    .poster-title small{display:block;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.13em;margin-top:14px;text-transform:uppercase}
+    .poster-data{
+      position:absolute;right:24px;top:26px;width:180px;border:2px solid var(--ink);padding:12px;background:#fffaf1;
+      font-family:"DM Mono",monospace;font-size:.62rem;z-index:3;transform:rotate(2deg)
+    }
+    .poster-data b{color:var(--wine)}
+    .poster-chart{
+      position:absolute;left:28px;right:28px;bottom:44px;height:240px;border-left:3px solid var(--ink);border-bottom:3px solid var(--ink);
+      display:flex;align-items:end;gap:12px;padding:0 12px 0 16px;z-index:2
+    }
+    .poster-bar{flex:1;border:2px solid var(--ink);background:var(--wine);min-width:12px}
+    .poster-bar:nth-child(1){height:34%}.poster-bar:nth-child(2){height:67%;background:var(--gold)}
+    .poster-bar:nth-child(3){height:49%}.poster-bar:nth-child(4){height:82%;background:var(--ink)}
+    .poster-bar:nth-child(5){height:59%;background:var(--wine-3)}
+    .poster-label{
+      position:absolute;bottom:14px;right:26px;font-family:"Caveat",cursive;font-size:1.35rem;transform:rotate(-3deg);z-index:4
+    }
+    .poster-mark{
+      position:absolute;left:47%;top:42%;width:90px;height:90px;border:5px solid var(--wine);border-radius:50%;z-index:1;
+    }
+    .poster-mark::before,.poster-mark::after{
+      content:"";position:absolute;left:50%;top:-18px;width:5px;height:126px;background:var(--wine);transform-origin:center
+    }
+    .poster-mark::after{transform:rotate(90deg)}
+    .vinyl-float{
+      position:absolute;width:122px;height:122px;border-radius:50%;right:-8px;bottom:0;z-index:4;
+      background:
+        radial-gradient(circle,var(--cream) 0 6px,var(--gold) 7px 18px,var(--wine) 19px 31px,transparent 32px),
+        repeating-radial-gradient(circle,#090609 0 3px,#1f151b 4px 5px);
+      border:2px solid var(--gold);box-shadow:0 15px 35px rgba(0,0,0,.38);animation:spinSlow 16s linear infinite
+    }
+    @keyframes spinSlow{to{transform:rotate(360deg)}}
+
+    .section{padding:98px 0;border-top:1px solid var(--line);position:relative}
+    .section-head{display:grid;grid-template-columns:.38fr 1fr;gap:26px;align-items:end;margin-bottom:52px}
+    .kicker{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+    h2{font-size:clamp(2.7rem,5.7vw,5.7rem);line-height:.9;letter-spacing:-.06em;text-transform:uppercase}
+    .outline{color:transparent;-webkit-text-stroke:1.4px var(--cream)}
+    .hand{font-family:"Caveat",cursive;color:var(--gold);text-transform:none;letter-spacing:0;font-weight:600}
+
+    .storyboard{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start;
+    }
+    .story-main{
+      min-height:500px;border:1px solid var(--line);background:linear-gradient(160deg,#21131b,#160d12);padding:30px;position:relative;overflow:hidden;
+    }
+    .story-main::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(18deg,transparent 0 73%,rgba(90,16,40,.35) 73% 78%,transparent 78%),
+        radial-gradient(circle at 83% 20%,rgba(199,165,91,.12),transparent 26%);
+    }
+    .story-intro{position:relative;z-index:2;max-width:700px}
+    .story-intro p{font-size:clamp(1.15rem,2.4vw,1.55rem);line-height:1.48;color:var(--cream-2)}
+    .story-intro strong{color:var(--gold)}
+    .timeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:40px;position:relative;z-index:2}
+    .moment{
+      min-height:185px;border:1px solid rgba(244,239,231,.2);background:rgba(255,255,255,.025);padding:16px;position:relative;
+      transition:.2s ease
+    }
+    .moment:hover{transform:translateY(-4px) rotate(-.5deg);border-color:var(--gold)}
+    .moment .year{font-family:"DM Mono",monospace;color:var(--gold);font-size:.7rem}
+    .moment h3{font-size:1.03rem;line-height:1.08;margin-top:20px;text-transform:uppercase}
+    .moment p{font-size:.79rem;color:var(--muted);margin-top:10px}
+    .moment::after{
+      content:"";position:absolute;right:10px;top:10px;width:18px;height:18px;border:1px solid var(--wine-3);transform:rotate(16deg)
     }
 
-    .contact-box p {
-      max-width: 720px;
-      margin-top: 22px;
-      font-size: 1.05rem;
+    .story-collage{display:grid;gap:16px}
+    .paper{
+      background:var(--cream);color:var(--ink);padding:24px;border:2px solid var(--gold);box-shadow:8px 8px 0 rgba(199,165,91,.16);
+      transform:rotate(-1deg);position:relative;overflow:hidden
+    }
+    .paper:nth-child(2){transform:rotate(1.2deg);background:#efe4d4}
+    .paper h3{font-family:"Caveat",cursive;font-size:2.25rem;line-height:.9}
+    .paper p{margin-top:14px;font-size:.93rem}
+    .paper .scribble{font-family:"DM Mono",monospace;font-size:.62rem;text-transform:uppercase;color:var(--wine);margin-top:17px}
+    .paper::after{
+      content:"✦";position:absolute;right:20px;top:14px;color:var(--wine);font-size:2rem;transform:rotate(15deg)
     }
 
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 34px;
+    .project-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .album{
+      grid-column:span 6;min-height:390px;border:1px solid var(--line);background:var(--panel);padding:26px;position:relative;overflow:hidden;
+      transition:.22s ease;cursor:pointer
+    }
+    .album:hover{transform:translateY(-5px);border-color:var(--gold)}
+    .album.big{grid-column:span 12;min-height:320px}
+    .album-cover{
+      width:100%;aspect-ratio:16/8;border:1px solid rgba(244,239,231,.18);background:
+        linear-gradient(135deg,rgba(90,16,40,.95),rgba(18,11,15,.96)),
+        radial-gradient(circle at 70% 30%,rgba(199,165,91,.25),transparent 30%);
+      position:relative;overflow:hidden;margin-bottom:22px
+    }
+    .album-cover.alt{background:linear-gradient(145deg,#21131b,#3d0c1d)}
+    .album-cover.light{background:linear-gradient(145deg,#d9c8af,#f4efe7);color:var(--ink)}
+    .album-art-title{
+      position:absolute;left:22px;bottom:18px;font-size:clamp(2rem,4vw,4rem);line-height:.82;text-transform:uppercase;letter-spacing:-.05em;
+      max-width:85%
+    }
+    .album-art-title em{font-family:"Caveat",cursive;color:var(--gold);font-style:normal;text-transform:none}
+    .album-cover.light .album-art-title em{color:var(--wine)}
+    .album-index{
+      position:absolute;top:16px;right:16px;font-family:"DM Mono",monospace;font-size:.66rem;border:1px solid currentColor;padding:5px 7px
+    }
+    .album h3{font-size:1.55rem;text-transform:uppercase;line-height:1}
+    .album p{color:var(--muted);margin-top:12px}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}
+    .tag{font-family:"DM Mono",monospace;font-size:.64rem;text-transform:uppercase;border:1px solid rgba(244,239,231,.3);padding:4px 7px;color:var(--cream-2)}
+    .album.light .tag{border-color:rgba(18,11,15,.35);color:var(--ink)}
+    .album-link{display:inline-block;margin-top:18px;color:var(--gold);font-weight:700;text-underline-offset:4px}
+
+    .discography{display:grid;gap:18px}
+    .record-row{
+      display:grid;grid-template-columns:112px 180px 1fr;gap:25px;align-items:center;padding:20px;border:1px solid var(--line);
+      background:rgba(255,255,255,.02);position:relative;overflow:hidden
+    }
+    .record-row::before{
+      content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--wine)
+    }
+    .record{
+      width:88px;height:88px;border-radius:50%;margin:auto;background:
+        radial-gradient(circle,var(--cream) 0 4px,var(--gold) 5px 13px,var(--wine) 14px 24px,transparent 25px),
+        repeating-radial-gradient(circle,#080608 0 2px,#21151c 3px 4px);
+      border:1px solid var(--gold);box-shadow:0 9px 22px rgba(0,0,0,.35);transition:transform .6s ease
+    }
+    .record-row:hover .record{transform:rotate(160deg)}
+    .record-date{font-family:"DM Mono",monospace;font-size:.72rem;text-transform:uppercase;color:var(--gold)}
+    .record-body h3{font-size:1.55rem;line-height:1;text-transform:uppercase}
+    .record-body .company{color:var(--gold);font-weight:700;margin-top:6px}
+    .record-body p{color:var(--muted);margin-top:10px;max-width:780px}
+
+    .skills-board{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px
+    }
+    .skill-note{
+      border:1px solid var(--line);background:var(--panel);padding:24px;min-height:250px;position:relative
+    }
+    .skill-note:nth-child(2){background:var(--wine-2)}
+    .skill-note:nth-child(3){background:var(--cream);color:var(--ink)}
+    .skill-note h3{font-size:1.2rem;text-transform:uppercase;margin-bottom:18px}
+    .skill-note ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+    .skill-note li{font-family:"DM Mono",monospace;font-size:.71rem;border:1px solid currentColor;padding:5px 8px}
+    .skill-note .stamp{
+      position:absolute;right:17px;bottom:16px;font-family:"Caveat",cursive;font-size:1.5rem;color:var(--gold);transform:rotate(-8deg)
+    }
+    .skill-note:nth-child(3) .stamp{color:var(--wine)}
+
+    .culture-scene{
+      background:linear-gradient(180deg,#1c1016,#10090d);border:1px solid var(--line);padding:30px;position:relative;overflow:hidden
+    }
+    .culture-scene::before{
+      content:"LISTEN / LEARN / BUILD / REPEAT";position:absolute;right:-75px;top:50%;transform:rotate(90deg);
+      font-family:"DM Mono",monospace;font-size:.64rem;letter-spacing:.2em;color:rgba(244,239,231,.09)
+    }
+    .culture-copy{max-width:780px}
+    .culture-copy h3{font-family:"Caveat",cursive;color:var(--gold);font-size:clamp(2.7rem,5vw,5rem);line-height:.85}
+    .culture-copy p{margin-top:18px;color:var(--muted)}
+
+    .record-store{margin-top:38px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:end}
+    .shelf{
+      border:1px solid rgba(244,239,231,.19);padding:24px 20px 17px;background:#170d13;min-height:300px;position:relative
+    }
+    .shelf::after{
+      content:"";position:absolute;left:12px;right:12px;bottom:36px;height:12px;background:#4b271f;border-top:3px solid #8b5a45;
+      box-shadow:0 16px 0 #2d1713
+    }
+    .records{display:flex;align-items:end;gap:7px;height:212px;padding:0 14px;position:relative;z-index:2}
+    .sleeve{
+      flex:1;min-width:58px;max-width:92px;height:170px;border:1px solid rgba(244,239,231,.28);cursor:pointer;position:relative;transition:.25s ease;
+      display:flex;align-items:flex-end;padding:9px;font-family:"DM Mono",monospace;font-size:.56rem;text-transform:uppercase;line-height:1.2
+    }
+    .sleeve:nth-child(1){background:var(--wine)}
+    .sleeve:nth-child(2){background:#24171e}
+    .sleeve:nth-child(3){background:var(--gold);color:var(--ink)}
+    .sleeve:nth-child(4){background:#e7ded0;color:var(--ink)}
+    .sleeve:nth-child(5){background:#3e0b1d}
+    .sleeve:hover,.sleeve.active{transform:translateY(-24px) rotate(-1deg);box-shadow:0 18px 30px rgba(0,0,0,.3)}
+    .sleeve::before{
+      content:"";position:absolute;width:60px;height:60px;border-radius:50%;left:50%;top:26px;transform:translateX(-50%);
+      background:repeating-radial-gradient(circle,#0b080a 0 2px,#251920 3px 4px);border:1px solid rgba(244,239,231,.24)
+    }
+    .sleeve::after{
+      content:"";position:absolute;width:18px;height:18px;border-radius:50%;left:50%;top:47px;transform:translateX(-50%);background:var(--wine);border:2px solid var(--gold)
     }
 
-    .contact-links a {
-      border: 2px solid var(--white);
-      padding: 10px 14px;
-      text-decoration: none;
-      font-family: "DM Mono", monospace;
-      font-size: .77rem;
-      text-transform: uppercase;
-      transition: background .16s ease, color .16s ease;
+    .culture-card{
+      min-height:310px;background:var(--cream);color:var(--ink);border:2px solid var(--gold);padding:28px;box-shadow:8px 8px 0 rgba(199,165,91,.14);
+      transform:rotate(1deg);position:relative
+    }
+    .culture-card .label{font-family:"DM Mono",monospace;font-size:.64rem;text-transform:uppercase;color:var(--wine)}
+    .culture-card h4{font-family:"Caveat",cursive;font-size:2.8rem;line-height:.9;margin-top:18px}
+    .culture-card p{margin-top:18px}
+    .culture-card::after{
+      content:"SIDE A";position:absolute;right:20px;bottom:18px;font-family:"DM Mono",monospace;font-size:.66rem;border:1px solid var(--ink);padding:4px 6px;transform:rotate(-4deg)
     }
 
-    .contact-links a:hover,
-    .contact-links a:focus-visible {
-      background: var(--white);
-      color: var(--red);
+    .contact-box{
+      background:linear-gradient(135deg,var(--wine-2),#220d16 70%);border:1px solid rgba(199,165,91,.5);padding:clamp(32px,6vw,70px);
+      box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .contact-box::before{
+      content:"";position:absolute;width:270px;height:270px;border-radius:50%;right:-80px;top:-60px;
+      background:repeating-radial-gradient(circle,#10090d 0 4px,#27151d 5px 7px);border:2px solid var(--gold);opacity:.9
+    }
+    .contact-box h2{max-width:800px;position:relative;z-index:2}
+    .contact-box p{max-width:700px;margin-top:18px;color:var(--cream-2);position:relative;z-index:2}
+    .contact-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;position:relative;z-index:2}
+    .contact-links a{
+      border:1px solid var(--gold);padding:10px 13px;text-decoration:none;font-family:"DM Mono",monospace;font-size:.72rem;text-transform:uppercase
+    }
+    .contact-links a:hover{background:var(--gold);color:var(--ink)}
+
+    footer{border-top:1px solid var(--line);padding:25px 16px 34px;text-align:center;font-family:"DM Mono",monospace;font-size:.69rem;color:var(--muted)}
+
+    dialog{
+      width:min(780px,calc(100% - 28px));border:1px solid var(--gold);background:#140c11;color:var(--cream);padding:0;box-shadow:0 30px 90px rgba(0,0,0,.6)
+    }
+    dialog::backdrop{background:rgba(4,2,3,.78);backdrop-filter:blur(5px)}
+    .modal-inner{padding:30px}
+    .modal-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .modal-top h3{font-size:2rem;text-transform:uppercase;line-height:.96}
+    .close-modal{background:none;color:var(--gold);border:1px solid var(--gold);width:38px;height:38px;cursor:pointer;font-size:1.15rem}
+    .modal-body{margin-top:22px;color:var(--cream-2)}
+    .modal-body ul{margin-top:16px;padding-left:20px}
+    .modal-body li{margin-bottom:8px}
+
+    .recruiter{
+      position:fixed;inset:0;z-index:1200;background:var(--cream);color:var(--ink);overflow:auto;display:none
+    }
+    .recruiter.open{display:block}
+    .recruiter-inner{width:min(980px,calc(100% - 30px));margin:auto;padding:40px 0 70px}
+    .recruiter-top{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:16px}
+    .recruiter-top h2{font-size:clamp(2.2rem,5vw,4.4rem)}
+    .recruiter-close{border:2px solid var(--ink);background:transparent;padding:10px 13px;font-family:"DM Mono",monospace;cursor:pointer}
+    .quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px}
+    .quick-card{border:2px solid var(--ink);padding:22px}
+    .quick-card h3{text-transform:uppercase;font-size:1.15rem;margin-bottom:11px}
+    .quick-card p,.quick-card li{font-size:.95rem}
+    .quick-card ul{padding-left:19px}
+    .quick-card a{font-weight:700}
+    .quick-full{grid-column:1/-1}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:.55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+    @media(max-width:930px){
+      .hero{grid-template-columns:1fr}
+      .hero-art{min-height:500px}
+      .section-head,.storyboard,.record-store{grid-template-columns:1fr}
+      .timeline-strip{grid-template-columns:repeat(2,1fr)}
+      .album{grid-column:span 12}
+      .record-row{grid-template-columns:92px 1fr}
+      .record-date{grid-column:2}
+      .skills-board{grid-template-columns:1fr}
     }
 
-    footer {
-      border-top: 2px solid var(--ink);
-      padding: 24px 16px 34px;
-      font-family: "DM Mono", monospace;
-      font-size: .72rem;
-      text-align: center;
+    @media(max-width:720px){
+      .shell{width:min(var(--max),calc(100% - 24px))}
+      .nav{align-items:flex-start;padding:12px 0;overflow-x:auto}
+      .brand span:last-child{display:none}
+      .nav-links{gap:12px;min-width:max-content}
+      .nav-links a{font-size:.65rem}
+      .recruiter-btn{font-size:.64rem}
+      h1{font-size:clamp(3.3rem,18vw,5.7rem)}
+      .hero{padding:56px 0 65px}
+      .hero-art{min-height:410px}
+      .poster{inset:14px 0 12px 0}
+      .poster-data{display:none}
+      .poster-chart{height:185px}
+      .section{padding:72px 0}
+      .timeline-strip{grid-template-columns:1fr}
+      .record-row{grid-template-columns:78px 1fr;gap:16px}
+      .record{width:67px;height:67px}
+      .record-date{grid-column:2}
+      .records{gap:5px;padding:0 4px}
+      .sleeve{min-width:46px;height:150px;padding:6px;font-size:.49rem}
+      .quick-grid{grid-template-columns:1fr}
+      .quick-full{grid-column:1}
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--blue);
-      outline-offset: 4px;
-    }
-
-    @media (max-width: 920px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 56px;
-      }
-
-      .art-board {
-        min-height: 420px;
-      }
-
-      .section-head,
-      .about-grid,
-      .culture {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        align-items: start;
-      }
-
-      .capabilities {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .project.large,
-      .project.small {
-        grid-column: span 12;
-      }
-
-      .skills-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .cert-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        width: min(100% - 20px, var(--max));
-        min-height: 60px;
-        align-items: flex-start;
-        padding: 12px 0;
-        overflow-x: auto;
-      }
-
-      .nav-links {
-        gap: 13px;
-        padding-right: 8px;
-      }
-
-      .nav-links a {
-        font-size: .7rem;
-      }
-
-      .hero,
-      .section {
-        width: min(100% - 26px, var(--max));
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 64px 0 72px;
-      }
-
-      h1 {
-        font-size: clamp(3.4rem, 18vw, 5.8rem);
-      }
-
-      .name-line:nth-child(2) {
-        -webkit-text-stroke: 1px var(--ink);
-        text-shadow: 3px 3px 0 var(--yellow);
-      }
-
-      .art-board {
-        min-height: 360px;
-      }
-
-      .bars {
-        inset: 88px 24px 88px 38px;
-        gap: 10px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .capabilities,
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .job {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .project {
-        padding: 23px;
-        min-height: 330px;
-      }
-
-      .contact-box {
-        box-shadow: 6px 6px 0 var(--ink);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
     }
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
-  <div class="noise" aria-hidden="true"></div>
 
   <header class="topbar">
-    <nav class="nav" aria-label="Navegação principal">
-      <a class="brand" href="#inicio"><b>MEL.</b> / data + culture</a>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#experiencia">Trajetória</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="shell">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio">
+          <span class="vinyl-mini" aria-hidden="true"></span>
+          <span><strong>MEL.</strong> / DATA + CULTURE</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#trajetoria">Trajetória</a></li>
+          <li><a href="#cultura">Cultura</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><button class="recruiter-btn" id="openRecruiter">Recruiter mode</button></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="inicio">
-      <div class="hero-copy">
-        <div class="eyebrow">Sorocaba, SP · Dados & Automação</div>
-        <h1 aria-label="Murilo Eduardo Lima">
-          <span class="name-line">Murilo</span>
-          <span class="name-line">Eduardo</span>
-          <span class="name-line">Lima</span>
+    <section class="shell hero" id="inicio">
+      <div>
+        <div class="eyebrow">Sorocaba · Dados · Automação · Cultura</div>
+        <h1>
+          <span>Murilo</span><br>
+          <span class="ghost">Eduardo</span><br>
+          <span class="gold">Lima</span>
         </h1>
-
-        <p class="hero-role">
-          <span class="marker">Analista de Dados Júnior</span> construindo pontes entre dados, automação, tecnologia e processos.
-        </p>
-
-        <p class="hero-text">
-          Trabalho com tratamento e validação de bases, indicadores, dashboards e automações usando Python, SQL, Excel, Power BI e AWS Athena. Gosto especialmente da parte em que uma rotina confusa vira algo confiável, repetível e útil para decisão.
-        </p>
-
+        <p class="hero-role"><b>Analista de Dados Júnior</b> conectando dados, processos e automação com uma identidade que não parece ter saído de um template corporativo genérico.</p>
+        <p class="hero-text">Atuo com tratamento e validação de bases, indicadores, dashboards e rotinas com Python, SQL, Excel, Power BI e AWS Athena. Gosto de transformar confusão operacional em informação confiável e ação prática.</p>
         <div class="hero-actions">
           <a class="btn" href="#projetos">Ver projetos</a>
-          <a class="btn alt" href="https://github.com/Muriiloedu" target="_blank" rel="noopener noreferrer">Explorar GitHub ↗</a>
+          <a class="btn alt" href="#sobre">Conhecer trajetória</a>
         </div>
-
-        <div class="hero-note">clean → query → automate → decide</div>
+        <div class="scribble-note">dados têm ritmo. processo também.</div>
       </div>
 
-      <div class="art-board" aria-label="Composição visual abstrata inspirada em dados, gráficos e arte urbana">
-        <div class="chart-title">data is a living thing</div>
-        <div class="bars" aria-hidden="true">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="poster">
+          <div class="poster-title">data<br>with soul<small>analysis / automation / process</small></div>
+          <div class="poster-data">
+            <b>LIVE NOTES</b><br>
+            clean → validate<br>
+            query → compare<br>
+            automate → repeat<br>
+            visualize → decide
+          </div>
+          <div class="poster-mark"></div>
+          <div class="poster-chart">
+            <div class="poster-bar"></div>
+            <div class="poster-bar"></div>
+            <div class="poster-bar"></div>
+            <div class="poster-bar"></div>
+            <div class="poster-bar"></div>
+          </div>
+          <div class="poster-label">não é só número → é contexto.</div>
         </div>
-        <svg class="scribble" viewBox="0 0 500 560" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M40 77 C98 44, 108 112, 169 76 S260 54, 301 87 S385 111, 448 62" />
-          <path d="M310 420 C344 388, 386 389, 412 420 C438 451, 404 488, 365 480 C324 471, 301 443, 310 420 Z" />
-          <path d="M325 447 L392 411 M324 412 L397 476" />
-          <path d="M72 472 C99 449, 116 503, 143 475 C165 453, 186 492, 207 465" />
-        </svg>
-        <div class="art-tag one">dados ≠<br>apenas números</div>
-        <div class="art-tag two">PYTHON · SQL · BI · AUTOMATION</div>
+        <div class="vinyl-float"></div>
       </div>
     </section>
 
     <section class="section reveal" id="sobre">
-      <div class="section-head">
-        <div class="section-kicker">01 / Sobre</div>
-        <h2>Da operação para <span class="stroke-word">os dados.</span></h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>
-            Sou formado em <strong>Análise e Desenvolvimento de Sistemas pela FACENS</strong> e minha trajetória passou por controladoria e operações antes de chegar à área de dados na KINTO Brasil. Essa mistura me ensinou a olhar para a informação não só como tabela, mas como parte de um processo que precisa funcionar de ponta a ponta.
-          </p>
-          <p style="margin-top:18px">
-            Hoje meu foco está em <strong>qualidade de dados, análise, automação e melhoria contínua</strong>: identificar inconsistências, organizar bases, construir indicadores, apoiar dashboards e reduzir trabalho manual com soluções simples e sustentáveis.
-          </p>
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">01 / Sobre mim</div>
+          <h2>Minha história <span class="hand">em camadas.</span></h2>
         </div>
 
-        <aside class="data-manifesto">
-          <span>manifesto / 2026</span>
-          <p>“Dados bons não começam no dashboard. Começam na pergunta certa, na base confiável e num processo que faz sentido.”</p>
-        </aside>
-      </div>
+        <div class="storyboard">
+          <div class="story-main">
+            <div class="story-intro">
+              <p>Sou formado em <strong>Análise e Desenvolvimento de Sistemas pela FACENS</strong>. Minha trajetória passou por controladoria, operação e atendimento antes de chegar à área de dados na KINTO. Isso moldou um jeito de trabalhar que mistura <strong>contexto de negócio + qualidade de dados + automação</strong>.</p>
+            </div>
 
-      <div class="capabilities" aria-label="Áreas de atuação">
-        <article class="cap">
-          <div class="cap-num">01</div>
-          <h3>Qualidade & Tratamento</h3>
-          <p>Duplicidades, nulos, padronização, conciliação e validação de bases.</p>
-        </article>
-        <article class="cap">
-          <div class="cap-num">02</div>
-          <h3>Análise & Indicadores</h3>
-          <p>Exploração de dados, métricas e apoio à construção de dashboards.</p>
-        </article>
-        <article class="cap">
-          <div class="cap-num">03</div>
-          <h3>Automação</h3>
-          <p>Rotinas com Python e Excel para reduzir tarefas repetitivas e retrabalho.</p>
-        </article>
-        <article class="cap">
-          <div class="cap-num">04</div>
-          <h3>Processos</h3>
-          <p>Mapeamento de fluxos, melhoria contínua e integração entre tecnologia e negócio.</p>
-        </article>
+            <div class="timeline-strip">
+              <article class="moment">
+                <div class="year">2024</div>
+                <h3>Iguatemi</h3>
+                <p>Controladoria, Excel, organização, rastreabilidade e disciplina operacional.</p>
+              </article>
+              <article class="moment">
+                <div class="year">2025</div>
+                <h3>KINTO Share</h3>
+                <p>Clientes, cadastros, frota, plataformas, controles e processos.</p>
+              </article>
+              <article class="moment">
+                <div class="year">2026</div>
+                <h3>Dados</h3>
+                <p>Python, SQL, Athena, validação de bases, indicadores e automação.</p>
+              </article>
+              <article class="moment">
+                <div class="year">Agora</div>
+                <h3>Próximo passo</h3>
+                <p>Consolidar carreira em análise de dados, BI e melhoria de processos.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="story-collage">
+            <article class="paper">
+              <h3>Quem é o Murilo?</h3>
+              <p>Alguém que gosta de tecnologia, rap, basquete, arte urbana e de resolver problema real. O lado técnico importa, mas a forma de comunicar também.</p>
+              <div class="scribble">data / rap / art / process</div>
+            </article>
+            <article class="paper">
+              <h3>Como eu penso?</h3>
+              <p>Antes de dashboard bonito, vem pergunta boa. Antes de automação, vem processo entendido. Antes de insight, vem dado confiável.</p>
+              <div class="scribble">ask → inspect → build → explain</div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section reveal" id="projetos">
-      <div class="section-head">
-        <div class="section-kicker">02 / Projetos & estudos</div>
-        <h2>Coisas que saíram <span class="stroke-word">do rascunho.</span></h2>
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">02 / Projetos</div>
+          <h2>Projetos como <span class="outline">capas de álbum.</span></h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="album" data-project="community">
+            <div class="album-cover">
+              <span class="album-index">P.01</span>
+              <div class="album-art-title">CommunityON<br><em>data meets community</em></div>
+            </div>
+            <h3>CommunityON</h3>
+            <p>Plataforma de gestão condominial voltada à centralização de solicitações, indicadores, rastreabilidade e redução da dependência de canais paralelos.</p>
+            <div class="tags">
+              <span class="tag">Web</span><span class="tag">Dashboard</span><span class="tag">Métricas</span><span class="tag">Produto</span>
+            </div>
+            <a class="album-link" href="https://github.com/Muriiloedu/TestKON-codex" target="_blank" rel="noopener noreferrer">ver repositório ↗</a>
+          </article>
+
+          <article class="album" data-project="stats">
+            <div class="album-cover light">
+              <span class="album-index">P.02</span>
+              <div class="album-art-title">Estatística<br><em>before the dashboard</em></div>
+            </div>
+            <h3>Estatística em Python</h3>
+            <p>Notebooks com exercícios de visualização, probabilidade e regressão linear, reforçando interpretação e raciocínio estatístico.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">Regressão</span><span class="tag">Visualização</span>
+            </div>
+            <a class="album-link" href="https://github.com/Muriiloedu/EstatisticaPython" target="_blank" rel="noopener noreferrer">ver estudos ↗</a>
+          </article>
+
+          <article class="album big" data-project="aqua">
+            <div class="album-cover alt">
+              <span class="album-index">P.03</span>
+              <div class="album-art-title">AquaTech Code<br><em>signals before the flood</em></div>
+            </div>
+            <h3>Sistema de Alerta de Enchentes</h3>
+            <p>Sistema inteligente para monitoramento do nível da água em áreas de risco de Sorocaba com sensores e ESP32, pensado para identificar aumentos críticos e apoiar alertas em tempo real.</p>
+            <div class="tags">
+              <span class="tag">ESP32</span><span class="tag">IoT</span><span class="tag">Sensores</span><span class="tag">Tempo real</span>
+            </div>
+          </article>
+        </div>
       </div>
-
-      <div class="project-grid">
-        <article class="project large red">
-          <div class="project-top">
-            <span class="project-index">P.01</span>
-            <span class="project-type">Produto · Dados · Web</span>
-          </div>
-          <h3>CommunityON</h3>
-          <p>
-            MVP de gestão condominial criado para centralizar solicitações de moradores e dar visibilidade para a administração. O protótipo inclui fila de chamados, status, métricas operacionais, SLA e uma base para evoluir dashboards e mapa de calor.
-          </p>
-          <div class="project-bottom">
-            <div class="tags">
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">Dashboard</span>
-              <span class="tag">Métricas</span>
-              <span class="tag">Produto</span>
-            </div>
-            <a class="project-link" href="https://github.com/Muriiloedu/TestKON-codex" target="_blank" rel="noopener noreferrer">ver repositório ↗</a>
-          </div>
-        </article>
-
-        <article class="project small yellow">
-          <div class="project-top">
-            <span class="project-index">P.02</span>
-            <span class="project-type">Python · Estatística</span>
-          </div>
-          <h3>Estatística em Python</h3>
-          <p>
-            Repositório de estudos práticos com notebooks voltados a visualização, probabilidade e regressão linear. É a parte menos “bonita” e mais importante do processo: aprender a ler o dado antes de tentar contar uma história com ele.
-          </p>
-          <div class="project-bottom">
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Jupyter</span>
-              <span class="tag">Regressão</span>
-              <span class="tag">Visualização</span>
-            </div>
-            <a class="project-link" href="https://github.com/Muriiloedu/EstatisticaPython" target="_blank" rel="noopener noreferrer">ver estudos ↗</a>
-          </div>
-        </article>
-
-        <article class="project full blue">
-          <div class="project-top">
-            <span class="project-index">P.03</span>
-            <span class="project-type">IoT · Monitoramento · Impacto social</span>
-          </div>
-          <h3>AquaTech Code — Sistema de Alerta de Enchentes</h3>
-          <p>
-            Sistema inteligente para monitorar nível de água em áreas de risco de Sorocaba utilizando ESP32 e sensores. A proposta conecta hardware e software para detectar níveis críticos e apoiar alertas preventivos em regiões vulneráveis a alagamentos.
-          </p>
-          <div class="project-bottom">
-            <div class="tags">
-              <span class="tag">ESP32</span>
-              <span class="tag">IoT</span>
-              <span class="tag">Tempo real</span>
-              <span class="tag">Sensores</span>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <p class="privacy-note">* Projetos profissionais de dados na KINTO são descritos por competências e responsabilidades, sem expor bases, regras internas ou informações confidenciais.</p>
     </section>
 
-    <section class="section reveal" id="experiencia">
-      <div class="section-head">
-        <div class="section-kicker">03 / Trajetória</div>
-        <h2>Processo, operação, <span class="stroke-word">dados.</span></h2>
-      </div>
+    <section class="section reveal" id="trajetoria">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">03 / Discografia profissional</div>
+          <h2>Cada fase, <span class="hand">um lado do disco.</span></h2>
+        </div>
 
-      <div class="timeline">
-        <article class="job">
-          <div class="job-date">Jun/2026 — Atual</div>
-          <div>
-            <h3>Aprendiz de Dados</h3>
-            <div class="company">KINTO Brasil (Toyota)</div>
-            <ul>
-              <li>Tratamento e validação de bases, identificando duplicidades, inconsistências, campos nulos e necessidades de padronização.</li>
-              <li>Apoio à construção de indicadores, dashboards e análises para áreas operacionais.</li>
-              <li>Desenvolvimento de rotinas de análise e automação com Excel, Python, SQL e AWS Athena.</li>
-              <li>Participação em iniciativas de qualidade de dados, conciliação entre sistemas e melhoria contínua.</li>
-            </ul>
-          </div>
-        </article>
+        <div class="discography">
+          <article class="record-row">
+            <div class="record" aria-hidden="true"></div>
+            <div class="record-date">Jun/2026 — Atual</div>
+            <div class="record-body">
+              <h3>Aprendiz de Dados</h3>
+              <div class="company">KINTO Brasil (Toyota)</div>
+              <p>Tratamento e validação de bases, identificação de inconsistências e nulos, apoio a indicadores e dashboards, automações em Excel e Python, consultas com SQL/AWS Athena, conciliação e melhoria contínua.</p>
+            </div>
+          </article>
 
-        <article class="job">
-          <div class="job-date">Out/2025 — Jun/2026</div>
-          <div>
-            <h3>Aprendiz de Atendimento e SHARE</h3>
-            <div class="company">KINTO Brasil (Toyota)</div>
-            <ul>
-              <li>Gestão e atualização de cadastros de clientes e veículos nas plataformas KINTO Share.</li>
-              <li>Planilhas de controle para acompanhamento de frota e apoio às rotinas operacionais.</li>
-              <li>Suporte a clientes e concessionárias e organização de fluxos internos.</li>
-            </ul>
-          </div>
-        </article>
+          <article class="record-row">
+            <div class="record" aria-hidden="true"></div>
+            <div class="record-date">Out/2025 — Jun/2026</div>
+            <div class="record-body">
+              <h3>Aprendiz de Atendimento e SHARE</h3>
+              <div class="company">KINTO Brasil (Toyota)</div>
+              <p>Gestão e atualização de cadastros, controles de frota, suporte a clientes e concessionárias, organização de fluxos e apoio à padronização dos processos internos.</p>
+            </div>
+          </article>
 
-        <article class="job">
-          <div class="job-date">Jul/2024 — Out/2025</div>
-          <div>
-            <h3>Aprendiz de Controladoria</h3>
-            <div class="company">Iguatemi S.A.</div>
-            <ul>
-              <li>Atualização de controles e planilhas em Excel, organização de documentos e suporte às rotinas da Controladoria.</li>
-              <li>Conferência e controle de informações financeiras com foco em integridade e rastreabilidade dos registros.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job">
-          <div class="job-date">Fev/2024 — Jun/2026</div>
-          <div>
-            <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-            <div class="company">FACENS · Sorocaba, SP</div>
-            <ul>
-              <li>Formação concluída com projetos práticos envolvendo desenvolvimento, dados, gestão, IoT e tecnologia aplicada.</li>
-            </ul>
-          </div>
-        </article>
+          <article class="record-row">
+            <div class="record" aria-hidden="true"></div>
+            <div class="record-date">Jul/2024 — Out/2025</div>
+            <div class="record-body">
+              <h3>Aprendiz de Controladoria</h3>
+              <div class="company">Iguatemi S.A.</div>
+              <p>Atualização de controles e planilhas, organização de documentos e conferência de informações financeiras com foco em integridade e rastreabilidade.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section reveal" id="stack">
-      <div class="section-head">
-        <div class="section-kicker">04 / Stack</div>
-        <h2>Ferramentas para <span class="stroke-word">fazer acontecer.</span></h2>
-      </div>
-
-      <div class="skills-wrap">
-        <article class="skill-block">
-          <h3>Dados & BI</h3>
-          <ul>
-            <li>Python</li>
-            <li>Pandas</li>
-            <li>SQL</li>
-            <li>Excel Avançado</li>
-            <li>Power BI</li>
-            <li>AWS Athena</li>
-            <li>Jupyter Notebook</li>
-          </ul>
-        </article>
-
-        <article class="skill-block">
-          <h3>ETL & Automação</h3>
-          <ul>
-            <li>Limpeza</li>
-            <li>Transformação</li>
-            <li>Padronização</li>
-            <li>Validação</li>
-            <li>Conciliação</li>
-            <li>Regex</li>
-            <li>Automação</li>
-            <li>Qualidade de Dados</li>
-          </ul>
-        </article>
-
-        <article class="skill-block">
-          <h3>Tecnologia & Gestão</h3>
-          <ul>
-            <li>Git/GitHub</li>
-            <li>Java</li>
-            <li>JavaScript</li>
-            <li>HTML/CSS</li>
-            <li>Azure</li>
-            <li>Scrum</li>
-            <li>Kanban</li>
-            <li>Trello</li>
-            <li>IA Generativa</li>
-          </ul>
-        </article>
-      </div>
-
-      <div style="margin-top:70px">
-        <div class="section-head" style="margin-bottom:30px">
-          <div class="section-kicker">Cursos / Certificações</div>
-          <h2 style="font-size:clamp(2rem,4vw,3.9rem)">Aprender também é <span class="stroke-word">trabalho.</span></h2>
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">04 / Stack</div>
+          <h2>Ferramentas, não <span class="outline">fetiches.</span></h2>
         </div>
 
-        <div class="cert-grid">
-          <div class="cert"><span>Google / Coursera</span><strong>Certificado Profissional em Gerenciamento de Projetos</strong></div>
-          <div class="cert"><span>Veduca</span><strong>Gestão de Projetos</strong></div>
-          <div class="cert"><span>FGV</span><strong>Introdução ao Scrum</strong></div>
-          <div class="cert"><span>Udemy</span><strong>Excel Avançado</strong></div>
-          <div class="cert"><span>Santander Avançar</span><strong>Excel Intermediário</strong></div>
-          <div class="cert"><span>Fundação Bradesco</span><strong>IA-900 — Fundamentos de IA no Azure</strong></div>
-          <div class="cert"><span>Alura</span><strong>Imersão Dev com Inteligência Artificial</strong></div>
-          <div class="cert"><span>Fundação Bradesco</span><strong>Projetos de Sistemas de TI</strong></div>
+        <div class="skills-board">
+          <article class="skill-note">
+            <h3>Dados & BI</h3>
+            <ul>
+              <li>Python</li><li>Pandas</li><li>SQL</li><li>Excel Avançado</li><li>Power BI</li><li>AWS Athena</li><li>Jupyter</li>
+            </ul>
+            <div class="stamp">query it.</div>
+          </article>
+          <article class="skill-note">
+            <h3>ETL & Qualidade</h3>
+            <ul>
+              <li>Limpeza</li><li>Transformação</li><li>Padronização</li><li>Validação</li><li>Conciliação</li><li>Regex</li><li>Automação</li>
+            </ul>
+            <div class="stamp">trust the base.</div>
+          </article>
+          <article class="skill-note">
+            <h3>Tecnologia & Gestão</h3>
+            <ul>
+              <li>Git/GitHub</li><li>Java</li><li>JavaScript</li><li>HTML/CSS</li><li>Azure</li><li>Scrum</li><li>Kanban</li><li>Trello</li><li>IA Generativa</li>
+            </ul>
+            <div class="stamp">ship it.</div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section reveal" id="cultura">
-      <div class="section-head">
-        <div class="section-kicker">05 / Cultura</div>
-        <h2>Nem tudo cabe <span class="stroke-word">numa planilha.</span></h2>
-      </div>
-
-      <div class="culture">
-        <div class="culture-copy">
-          <h3>data with soul.</h3>
-          <p>
-            Rap, arte urbana, basquete, videogames e tecnologia fazem parte da forma como penso e crio. Este portfólio mistura a lógica dos dados com uma estética crua de rua e neoexpressionismo: menos “template corporativo número 47”, mais identidade.
-          </p>
-          <p>
-            A referência está na energia, nas camadas, nos traços imperfeitos e na liberdade visual — sem reproduzir obras específicas de nenhum artista.
-          </p>
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">05 / Cultura</div>
+          <h2>Nem tudo cabe <span class="hand">numa planilha.</span></h2>
         </div>
 
-        <div class="culture-wall" aria-label="Parede artística com palavras relacionadas aos interesses de Murilo">
-          <span class="culture-word">RAP</span>
-          <span class="culture-word">BASKET</span>
-          <span class="culture-word">CODE</span>
-          <span class="culture-word">ART</span>
+        <div class="culture-scene">
+          <div class="culture-copy">
+            <h3>the record room.</h3>
+            <p>Rap, cultura negra, arte urbana, basquete, música e tecnologia também fazem parte do jeito que penso e crio. Aqui essa parte não fica escondida no rodapé como “hobby”. Ela entra na identidade do portfólio.</p>
+          </div>
+
+          <div class="record-store">
+            <div class="shelf" aria-label="Prateleira interativa de discos">
+              <div class="records">
+                <button class="sleeve active" data-culture="music">música</button>
+                <button class="sleeve" data-culture="culture">cultura</button>
+                <button class="sleeve" data-culture="basket">basquete</button>
+                <button class="sleeve" data-culture="tech">tecnologia</button>
+                <button class="sleeve" data-culture="vision">visão</button>
+              </div>
+            </div>
+
+            <article class="culture-card" id="cultureCard">
+              <div class="label">Now playing / track 01</div>
+              <h4>Música.</h4>
+              <p>Rap é uma das referências centrais da minha identidade. Gosto da construção de narrativa, estética, sample, camada e contexto. Tem muita coisa disso também em como eu penso projeto e dado.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section contact reveal" id="contato">
-      <div class="contact-box">
-        <div class="section-kicker" style="color:#fff;opacity:.8;margin-bottom:16px">06 / Contato</div>
-        <h2>Vamos transformar dado em decisão?</h2>
-        <p>
-          Aberto a oportunidades como Analista de Dados Júnior e a projetos envolvendo dados, BI, automação, qualidade de informação e melhoria de processos.
-        </p>
-
-        <div class="contact-links">
-          <a href="mailto:mukalima1227@gmail.com">E-mail</a>
-          <a href="https://linkedin.com/in/muriloeduardolima" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a href="https://github.com/Muriiloedu" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://wa.me/5515991483875" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+    <section class="section reveal" id="contato">
+      <div class="shell">
+        <div class="contact-box">
+          <div class="kicker">06 / Contato</div>
+          <h2>Vamos transformar <span class="hand">dado em decisão?</span></h2>
+          <p>Aberto a oportunidades como Analista de Dados Júnior e a projetos envolvendo análise, BI, automação, qualidade de dados e melhoria de processos.</p>
+          <div class="contact-links">
+            <a href="mailto:mukalima1227@gmail.com">E-mail</a>
+            <a href="https://linkedin.com/in/muriloeduardolima" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/Muriiloedu" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://wa.me/5515991483875" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    © <span id="year">2026</span> Murilo Eduardo Lima · construído entre dados, código e rabiscos.
-  </footer>
+  <footer>© <span id="year">2026</span> Murilo Eduardo Lima · dados, código, música e alguns rabiscos.</footer>
+
+  <dialog id="projectDialog">
+    <div class="modal-inner">
+      <div class="modal-top">
+        <h3 id="modalTitle">Projeto</h3>
+        <button class="close-modal" id="closeDialog" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </dialog>
+
+  <aside class="recruiter" id="recruiterMode" aria-hidden="true">
+    <div class="recruiter-inner">
+      <div class="recruiter-top">
+        <h2>Recruiter mode.</h2>
+        <button class="recruiter-close" id="closeRecruiter">Fechar</button>
+      </div>
+
+      <div class="quick-grid">
+        <section class="quick-card quick-full">
+          <h3>Murilo Eduardo Lima</h3>
+          <p><strong>Analista de Dados Júnior</strong> · Sorocaba/SP. Formado em Análise e Desenvolvimento de Sistemas pela FACENS, com atuação em análise de dados na KINTO Brasil.</p>
+        </section>
+
+        <section class="quick-card">
+          <h3>Stack principal</h3>
+          <p>Python, Pandas, SQL, Excel Avançado, Power BI, AWS Athena, Jupyter Notebook, automação, qualidade e conciliação de dados.</p>
+        </section>
+
+        <section class="quick-card">
+          <h3>Objetivo</h3>
+          <p>Atuar como Analista de Dados Júnior contribuindo com qualidade de dados, melhoria de processos, automação e geração de insights para tomada de decisão.</p>
+        </section>
+
+        <section class="quick-card quick-full">
+          <h3>Experiência</h3>
+          <ul>
+            <li><strong>KINTO Brasil — Aprendiz de Dados</strong> · Jun/2026 — Atual</li>
+            <li><strong>KINTO Brasil — Aprendiz de Atendimento e SHARE</strong> · Out/2025 — Jun/2026</li>
+            <li><strong>Iguatemi S.A. — Aprendiz de Controladoria</strong> · Jul/2024 — Out/2025</li>
+          </ul>
+        </section>
+
+        <section class="quick-card">
+          <h3>Projetos</h3>
+          <ul>
+            <li>CommunityON</li>
+            <li>Estatística em Python</li>
+            <li>AquaTech Code</li>
+          </ul>
+        </section>
+
+        <section class="quick-card">
+          <h3>Contato</h3>
+          <p><a href="mailto:mukalima1227@gmail.com">mukalima1227@gmail.com</a><br>
+          <a href="https://linkedin.com/in/muriloeduardolima" target="_blank" rel="noopener noreferrer">LinkedIn</a><br>
+          <a href="https://github.com/Muriiloedu" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </section>
+      </div>
+    </div>
+  </aside>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    const cultureData = {
+      music: {
+        label: "Now playing / track 01",
+        title: "Música.",
+        text: "Rap é uma das referências centrais da minha identidade. Gosto da construção de narrativa, estética, sample, camada e contexto. Tem muita coisa disso também em como eu penso projeto e dado."
+      },
+      culture: {
+        label: "Now playing / track 02",
+        title: "Cultura.",
+        text: "Arte urbana, cultura negra e linguagem visual me interessam porque comunicam história sem precisar fingir neutralidade estética. Este site assume isso em vez de esconder."
+      },
+      basket: {
+        label: "Now playing / track 03",
+        title: "Basquete.",
+        text: "Basquete mistura leitura de espaço, ritmo, tomada de decisão e adaptação em segundos. Fora da quadra, continuo gostando desse mesmo tipo de raciocínio."
+      },
+      tech: {
+        label: "Now playing / track 04",
+        title: "Tecnologia.",
+        text: "Tecnologia me interessa quando resolve um problema de verdade. Código, automação, IA e dados são ferramentas. O objetivo continua sendo simplificar, melhorar e entregar valor."
+      },
+      vision: {
+        label: "Now playing / track 05",
+        title: "Visão.",
+        text: "Quero construir uma carreira que una repertório técnico, contexto de negócio e identidade própria. Ser bom em dados não precisa significar parecer um dashboard ambulante."
+      }
+    };
+
+    const sleeves = document.querySelectorAll(".sleeve");
+    const cultureCard = document.getElementById("cultureCard");
+    sleeves.forEach(function(sleeve){
+      sleeve.addEventListener("click", function(){
+        sleeves.forEach(function(el){ el.classList.remove("active"); });
+        sleeve.classList.add("active");
+        const item = cultureData[sleeve.dataset.culture];
+        cultureCard.innerHTML = '<div class="label">' + item.label + '</div><h4>' + item.title + '</h4><p>' + item.text + '</p>';
+      });
+    });
+
+    const projectData = {
+      community: {
+        title: "CommunityON",
+        body: "<p>Plataforma web criada para centralizar a comunicação e a gestão de solicitações em condomínios.</p><ul><li>Registro e acompanhamento de demandas.</li><li>Indicadores e visão administrativa.</li><li>Foco em rastreabilidade e redução de canais paralelos.</li></ul>"
+      },
+      stats: {
+        title: "Estatística em Python",
+        body: "<p>Repositório de estudos práticos em Python e Jupyter Notebook.</p><ul><li>Visualização de dados.</li><li>Probabilidade.</li><li>Regressão linear.</li><li>Interpretação estatística antes da camada de apresentação.</li></ul>"
+      },
+      aqua: {
+        title: "AquaTech Code",
+        body: "<p>Projeto de monitoramento de nível de água em áreas de risco de Sorocaba.</p><ul><li>ESP32 e sensores.</li><li>Monitoramento em tempo real.</li><li>Detecção de níveis críticos.</li><li>Aplicação de tecnologia em prevenção de desastres.</li></ul>"
+      }
+    };
+
+    const dialog = document.getElementById("projectDialog");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+
+    document.querySelectorAll(".album[data-project]").forEach(function(card){
+      card.addEventListener("dblclick", function(){
+        const item = projectData[card.dataset.project];
+        modalTitle.textContent = item.title;
+        modalBody.innerHTML = item.body;
+        dialog.showModal();
+      });
+    });
+
+    document.getElementById("closeDialog").addEventListener("click", function(){ dialog.close(); });
+    dialog.addEventListener("click", function(e){ if(e.target === dialog) dialog.close(); });
+
+    const recruiter = document.getElementById("recruiterMode");
+    const openRecruiter = document.getElementById("openRecruiter");
+    const closeRecruiter = document.getElementById("closeRecruiter");
+
+    openRecruiter.addEventListener("click", function(){
+      recruiter.classList.add("open");
+      recruiter.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    });
+
+    closeRecruiter.addEventListener("click", function(){
+      recruiter.classList.remove("open");
+      recruiter.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    });
+
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){
+        if(dialog.open) dialog.close();
+        if(recruiter.classList.contains("open")) closeRecruiter.click();
+      }
+    });
+
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const items = document.querySelectorAll(".reveal");
-
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      items.forEach(function(item) { item.classList.add("visible"); });
+    if(reduceMotion || !("IntersectionObserver" in window)){
+      items.forEach(function(item){ item.classList.add("visible"); });
     } else {
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
+      const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
             entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
-
-      items.forEach(function(item) { observer.observe(item); });
+      },{threshold:.12});
+      items.forEach(function(item){ observer.observe(item); });
     }
   </script>
 </body>
