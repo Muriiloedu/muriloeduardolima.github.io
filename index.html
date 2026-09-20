@@ -623,6 +623,47 @@
     .stage-copy strong{font-family:"Caveat",cursive;color:var(--paper);font-size:1.45rem;font-weight:600}
     .dj-illustration{display:block;width:100%;height:auto;max-height:330px}
 
+
+    .music-dock{
+      position:fixed;right:18px;bottom:18px;z-index:850;
+      display:flex;align-items:center;gap:10px;
+      background:rgba(13,8,11,.94);border:1px solid rgba(209,173,98,.55);
+      padding:9px 12px 9px 9px;box-shadow:0 16px 44px rgba(0,0,0,.42);
+      backdrop-filter:blur(12px)
+    }
+    .music-disc{
+      width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);cursor:pointer;
+      background:
+        radial-gradient(circle,var(--cream) 0 3px,var(--wine) 4px 10px,transparent 11px),
+        repeating-radial-gradient(circle,#080608 0 2px,#21151b 3px 4px);
+      position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease
+    }
+    .music-disc:hover{box-shadow:0 0 0 4px rgba(209,173,98,.1)}
+    .music-disc.playing{animation:spin 4.5s linear infinite}
+    .music-disc::after{
+      content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      color:var(--cream);font-size:.57rem;text-shadow:0 1px 3px #000
+    }
+    .music-disc.playing::after{content:"Ⅱ";font-size:.72rem;font-weight:700}
+    .music-meta{min-width:0}
+    .music-meta strong{
+      display:block;color:var(--cream);font-size:.74rem;line-height:1.15;white-space:nowrap
+    }
+    .music-meta span{
+      display:block;margin-top:3px;color:var(--gold);font-family:"DM Mono",monospace;
+      font-size:.52rem;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap
+    }
+    .music-level{
+      width:64px;accent-color:var(--gold);cursor:pointer
+    }
+    @media(max-width:720px){
+      .music-dock{right:10px;bottom:10px;padding:7px 9px 7px 7px}
+      .music-disc{width:39px;height:39px}
+      .music-meta strong{font-size:.67rem}
+      .music-meta span{font-size:.47rem}
+      .music-level{width:50px}
+    }
+
     @media(max-width:930px){
       .hero{grid-template-columns:1fr}
       .hero-collage{min-height:520px}
@@ -1126,6 +1167,17 @@
     </section>
   </main>
 
+
+  <div class="music-dock" id="musicDock" aria-label="Controle do instrumental de fundo">
+    <button class="music-disc" id="musicToggle" type="button" aria-label="Tocar instrumental original"></button>
+    <div class="music-meta">
+      <strong>MEL. Records — Late Night Loop</strong>
+      <span id="musicStatus">beat pausado · clique no vinil</span>
+    </div>
+    <input class="music-level" id="musicLevel" type="range" min="0" max="100" value="26" aria-label="Volume do instrumental">
+  </div>
+
+
   <footer>© <span id="year">2026</span> Murilo Eduardo Lima · dados, código, música e alguns rabiscos.</footer>
 
   <dialog id="projectDialog">
@@ -1369,6 +1421,201 @@
         if(quickMode.classList.contains("open")) closeQuick.click();
       }
     });
+
+
+    // Instrumental original gerado no navegador com Web Audio API.
+    // O arranjo é próprio e não reproduz melodia, gravação ou instrumental de música comercial.
+    const musicToggle = document.getElementById("musicToggle");
+    const musicStatus = document.getElementById("musicStatus");
+    const musicLevel = document.getElementById("musicLevel");
+
+    let audioCtx = null;
+    let musicMaster = null;
+    let musicTimer = null;
+    let musicPlaying = false;
+    let stepIndex = 0;
+    let crackleSource = null;
+
+    const bpm = 84;
+    const stepMs = (60 / bpm / 4) * 1000;
+
+    function createNoiseBuffer(ctx, seconds){
+      const buffer = ctx.createBuffer(1, Math.floor(ctx.sampleRate * seconds), ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for(let i=0;i<data.length;i++){
+        data[i] = Math.random() * 2 - 1;
+      }
+      return buffer;
+    }
+
+    function kick(time){
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(118,time);
+      osc.frequency.exponentialRampToValueAtTime(46,time + .11);
+      gain.gain.setValueAtTime(.0001,time);
+      gain.gain.exponentialRampToValueAtTime(.75,time + .006);
+      gain.gain.exponentialRampToValueAtTime(.0001,time + .19);
+      osc.connect(gain).connect(musicMaster);
+      osc.start(time);
+      osc.stop(time + .21);
+    }
+
+    function snare(time){
+      const src = audioCtx.createBufferSource();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+      src.buffer = createNoiseBuffer(audioCtx,.17);
+      filter.type = "highpass";
+      filter.frequency.value = 1200;
+      gain.gain.setValueAtTime(.24,time);
+      gain.gain.exponentialRampToValueAtTime(.0001,time + .14);
+      src.connect(filter).connect(gain).connect(musicMaster);
+      src.start(time);
+      src.stop(time + .17);
+
+      const body = audioCtx.createOscillator();
+      const bodyGain = audioCtx.createGain();
+      body.type = "triangle";
+      body.frequency.setValueAtTime(185,time);
+      bodyGain.gain.setValueAtTime(.12,time);
+      bodyGain.gain.exponentialRampToValueAtTime(.0001,time + .09);
+      body.connect(bodyGain).connect(musicMaster);
+      body.start(time);
+      body.stop(time + .1);
+    }
+
+    function hat(time,open){
+      const src = audioCtx.createBufferSource();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+      src.buffer = createNoiseBuffer(audioCtx, open ? .11 : .045);
+      filter.type = "highpass";
+      filter.frequency.value = 5200;
+      gain.gain.setValueAtTime(open ? .07 : .048,time);
+      gain.gain.exponentialRampToValueAtTime(.0001,time + (open ? .1 : .04));
+      src.connect(filter).connect(gain).connect(musicMaster);
+      src.start(time);
+      src.stop(time + (open ? .11 : .05));
+    }
+
+    const bassPattern = [
+      73.42,null,null,73.42,
+      null,65.41,null,null,
+      58.27,null,65.41,null,
+      55.00,null,58.27,null
+    ];
+
+    function bass(time,freq){
+      if(!freq) return;
+      const osc = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq,time);
+      filter.type = "lowpass";
+      filter.frequency.value = 310;
+      gain.gain.setValueAtTime(.0001,time);
+      gain.gain.exponentialRampToValueAtTime(.19,time + .015);
+      gain.gain.exponentialRampToValueAtTime(.0001,time + .31);
+      osc.connect(filter).connect(gain).connect(musicMaster);
+      osc.start(time);
+      osc.stop(time + .34);
+    }
+
+    const chordProgression = [
+      [293.66,349.23,440.00],
+      [261.63,329.63,392.00],
+      [233.08,293.66,349.23],
+      [220.00,261.63,329.63]
+    ];
+
+    function chord(time,notes){
+      notes.forEach(function(freq,idx){
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const filter = audioCtx.createBiquadFilter();
+        osc.type = idx === 0 ? "triangle" : "sine";
+        osc.frequency.value = freq;
+        filter.type = "lowpass";
+        filter.frequency.value = 1550;
+        gain.gain.setValueAtTime(.0001,time);
+        gain.gain.exponentialRampToValueAtTime(.028,time + .04);
+        gain.gain.exponentialRampToValueAtTime(.0001,time + .72);
+        osc.connect(filter).connect(gain).connect(musicMaster);
+        osc.start(time);
+        osc.stop(time + .75);
+      });
+    }
+
+    function startCrackle(){
+      crackleSource = audioCtx.createBufferSource();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+      crackleSource.buffer = createNoiseBuffer(audioCtx,2);
+      crackleSource.loop = true;
+      filter.type = "bandpass";
+      filter.frequency.value = 2800;
+      filter.Q.value = .6;
+      gain.gain.value = .006;
+      crackleSource.connect(filter).connect(gain).connect(musicMaster);
+      crackleSource.start();
+    }
+
+    function scheduleStep(){
+      if(!audioCtx || !musicPlaying) return;
+      const t = audioCtx.currentTime + .025;
+      const s = stepIndex % 16;
+
+      if([0,6,10].includes(s)) kick(t);
+      if([4,12].includes(s)) snare(t);
+      if(s % 2 === 0) hat(t, s === 14);
+      bass(t,bassPattern[s]);
+
+      if(s === 0){
+        const bar = Math.floor(stepIndex / 16) % chordProgression.length;
+        chord(t + .01,chordProgression[bar]);
+      }
+
+      stepIndex++;
+    }
+
+    function initMusic(){
+      if(audioCtx) return;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      musicMaster = audioCtx.createGain();
+      musicMaster.gain.value = Number(musicLevel.value) / 100 * .48;
+      musicMaster.connect(audioCtx.destination);
+      startCrackle();
+    }
+
+    async function toggleMusic(){
+      initMusic();
+      if(audioCtx.state === "suspended") await audioCtx.resume();
+
+      musicPlaying = !musicPlaying;
+      musicToggle.classList.toggle("playing",musicPlaying);
+      musicToggle.setAttribute("aria-label",musicPlaying ? "Pausar instrumental original" : "Tocar instrumental original");
+      musicStatus.textContent = musicPlaying ? "tocando · instrumental original" : "beat pausado · clique no vinil";
+
+      if(musicPlaying){
+        scheduleStep();
+        musicTimer = window.setInterval(scheduleStep,stepMs);
+      } else {
+        window.clearInterval(musicTimer);
+        musicTimer = null;
+      }
+    }
+
+    musicToggle.addEventListener("click",toggleMusic);
+
+    musicLevel.addEventListener("input",function(){
+      if(!musicMaster) return;
+      const next = Number(musicLevel.value) / 100 * .48;
+      musicMaster.gain.setTargetAtTime(next,audioCtx.currentTime,.03);
+    });
+
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealItems = document.querySelectorAll(".reveal");
