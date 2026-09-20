@@ -522,10 +522,111 @@
     .quick-card h3{color:var(--gold);margin-bottom:8px}
     .quick-card ul{margin-left:18px}
 
+
+    .archive-intro{max-width:780px;color:var(--muted);margin:-20px 0 30px}
+    .crate-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .crate-filter{
+      background:transparent;color:var(--paper);border:1px solid var(--line);
+      padding:8px 11px;font-family:"DM Mono",monospace;font-size:.65rem;text-transform:uppercase;cursor:pointer
+    }
+    .crate-filter:hover,.crate-filter.active{background:var(--gold);border-color:var(--gold);color:var(--black)}
+    .crate-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:stretch}
+    .vinyl-crate{
+      min-height:475px;padding:54px 24px 31px;position:relative;overflow:hidden;
+      border:6px solid #4e281f;border-top-width:10px;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.025),transparent 15%,rgba(0,0,0,.08) 60%,transparent),
+        repeating-linear-gradient(0deg,#3b1c17 0 11px,#45221a 12px 23px);
+      box-shadow:inset 0 0 0 3px #7a4b35,0 24px 60px rgba(0,0,0,.35)
+    }
+    .vinyl-crate::before,.vinyl-crate::after{
+      content:"";position:absolute;left:12px;right:12px;height:18px;background:#5b3025;border-top:3px solid #8c6046;z-index:4
+    }
+    .vinyl-crate::before{top:25px}.vinyl-crate::after{bottom:13px}
+    .crate-label{
+      position:absolute;top:2px;left:50%;transform:translateX(-50%) rotate(-1deg);z-index:8;
+      background:var(--paper);color:var(--black);border:2px solid var(--black);padding:5px 10px;
+      font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.08em;white-space:nowrap
+    }
+    .crate-records{
+      height:378px;display:flex;align-items:flex-end;overflow-x:auto;overflow-y:hidden;
+      padding:40px 26px 16px 14px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent
+    }
+    .crate-sleeve{
+      flex:0 0 116px;height:286px;margin-left:-24px;border:1px solid rgba(244,239,232,.34);
+      position:relative;cursor:pointer;transition:.22s ease;box-shadow:3px 5px 12px rgba(0,0,0,.22);
+      padding:13px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;overflow:hidden
+    }
+    .crate-sleeve:first-child{margin-left:0}
+    .crate-sleeve:nth-child(3n+1){transform:rotate(-2deg)}
+    .crate-sleeve:nth-child(3n+2){transform:rotate(1.5deg)}
+    .crate-sleeve:nth-child(3n){transform:rotate(-.5deg)}
+    .crate-sleeve::before{
+      content:"";position:absolute;left:50%;top:42px;transform:translateX(-50%);
+      width:78px;height:78px;border-radius:50%;
+      background:repeating-radial-gradient(circle,#090609 0 3px,#24171e 4px 5px);
+      border:1px solid rgba(209,173,98,.58)
+    }
+    .crate-sleeve::after{
+      content:"";position:absolute;left:50%;top:70px;transform:translateX(-50%);
+      width:22px;height:22px;border-radius:50%;background:var(--wine);border:2px solid var(--gold)
+    }
+    .crate-sleeve span,.crate-sleeve small{position:relative;z-index:2}
+    .crate-sleeve span{font-size:.88rem;text-transform:uppercase;font-weight:700;line-height:1}
+    .crate-sleeve small{font-family:"DM Mono",monospace;font-size:.52rem;text-transform:uppercase;margin-top:6px;opacity:.78}
+    .crate-sleeve:hover,.crate-sleeve.active{transform:translateY(-42px) rotate(0);z-index:10;box-shadow:0 24px 34px rgba(0,0,0,.38)}
+    .crate-sleeve.filtered-out{display:none}
+    .sleeve-wine{background:linear-gradient(160deg,var(--wine),var(--wine-dark));color:var(--cream)}
+    .sleeve-dark{background:linear-gradient(160deg,#21131b,#0d080b);color:var(--cream)}
+    .sleeve-gold{background:linear-gradient(160deg,#d1ad62,#8c6734);color:var(--black)}
+    .sleeve-paper{background:linear-gradient(160deg,#f4efe8,#d9cabb);color:var(--black)}
+    .listening-station{display:grid;grid-template-rows:auto 1fr;gap:16px}
+    .turntable{
+      min-height:315px;background:linear-gradient(145deg,#21131b,#0e080b);border:1px solid var(--line);
+      position:relative;padding:22px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)
+    }
+    .turntable-brand{font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.1em;color:var(--gold)}
+    .platter{
+      width:224px;height:224px;border-radius:50%;background:#080608;
+      position:absolute;left:34px;top:58px;box-shadow:0 0 0 8px #2b1921,0 12px 30px rgba(0,0,0,.5)
+    }
+    .playing-record{
+      width:204px;height:204px;border-radius:50%;position:absolute;left:10px;top:10px;
+      background:repeating-radial-gradient(circle,#080608 0 3px,#1e1218 4px 5px);
+      animation:spin 8s linear infinite
+    }
+    .playing-record.switching{animation:recordSwap .42s ease,spin 8s linear infinite}
+    @keyframes recordSwap{0%{transform:scale(.8) rotate(-30deg);opacity:.2}100%{transform:scale(1) rotate(0);opacity:1}}
+    .record-label{
+      width:72px;height:72px;border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:7px;
+      background:var(--wine);border:3px solid var(--gold);color:var(--cream);
+      font-family:"DM Mono",monospace;font-size:.49rem;text-transform:uppercase;line-height:1.1
+    }
+    .tonearm{position:absolute;right:28px;top:66px;width:116px;height:210px}
+    .tonearm-base{position:absolute;right:0;top:0;width:58px;height:58px;border-radius:50%;background:#2a1a21;border:3px solid var(--gold)}
+    .tonearm-stick{
+      position:absolute;right:45px;top:38px;width:8px;height:154px;background:var(--paper);
+      transform:rotate(17deg);transform-origin:top;border-radius:10px
+    }
+    .tonearm-head{position:absolute;left:19px;bottom:17px;width:34px;height:18px;background:var(--gold);transform:rotate(17deg)}
+    .now-playing{background:var(--paper);color:var(--black);border:2px solid var(--gold);padding:22px;min-height:150px}
+    .now-playing .track{font-family:"DM Mono",monospace;font-size:.58rem;text-transform:uppercase;color:var(--wine)}
+    .now-playing h3{font-family:"Caveat",cursive;font-size:2.35rem;line-height:.9;color:var(--wine);margin-top:8px}
+    .now-playing p{margin-top:10px;font-size:.88rem}
+    .now-playing a{display:inline-block;margin-top:12px;color:var(--wine);font-weight:700;text-underline-offset:4px}
+    .dj-stage{margin-top:24px;border:1px solid var(--line);background:#0f080c;position:relative;overflow:hidden}
+    .stage-copy{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line)
+    }
+    .stage-copy span{font-family:"DM Mono",monospace;font-size:.6rem;text-transform:uppercase;color:var(--gold)}
+    .stage-copy strong{font-family:"Caveat",cursive;color:var(--paper);font-size:1.45rem;font-weight:600}
+    .dj-illustration{display:block;width:100%;height:auto;max-height:330px}
+
     @media(max-width:930px){
       .hero{grid-template-columns:1fr}
       .hero-collage{min-height:520px}
-      .section-head,.discography,.store-grid{grid-template-columns:1fr}
+      .section-head,.discography,.store-grid,.crate-layout{grid-template-columns:1fr}
       .journal{grid-template-columns:44px 1fr}
       .journal-page.right{grid-column:2}
       .journal-page.left{border-right:0;border-bottom:1px dashed rgba(13,8,11,.25)}
@@ -728,47 +829,96 @@
           <article class="album-card">
             <div class="cover">
               <span class="album-no">P.01</span>
-              <div class="cover-title">CommunityON<em>data meets community</em></div>
+              <div class="cover-title">CondoLives<em>community, data & product</em></div>
             </div>
-            <h3>CommunityON</h3>
-            <p>Plataforma web de gestão condominial criada para centralizar solicitações, aumentar a rastreabilidade e apoiar a administração com métricas, dashboards e relatórios.</p>
+            <h3>CondoLives / CommunityON</h3>
+            <p>Evolução do projeto de gestão e ouvidoria condominial: solicitações, indicadores, dashboards, relatórios, reservas e uma visão de produto orientada à comunicação e à rastreabilidade.</p>
             <div class="tags">
-              <span class="tag">Web</span><span class="tag">Dashboard</span><span class="tag">Dados</span><span class="tag">Produto</span>
+              <span class="tag">Produto</span><span class="tag">Dashboard</span><span class="tag">Dados</span><span class="tag">UX</span>
             </div>
             <div class="album-actions">
-              <a class="text-link" href="https://github.com/Muriiloedu/TestKON-codex" target="_blank" rel="noopener noreferrer">repositório ↗</a>
-              <button class="liner-btn project-open" data-project="community">abrir encarte</button>
+              <a class="text-link" href="https://www.linkedin.com/posts/muriloeduardolima_inovaaexaeto-gestaetocondominial-tecnologia-ugcPost-7396604092036399105-syl_/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+              <a class="text-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7468640345262678016/" target="_blank" rel="noopener noreferrer">publicação relacionada ↗</a>
+              <button class="liner-btn project-open" data-project="condolives">abrir encarte</button>
             </div>
           </article>
 
           <article class="album-card">
             <div class="cover paper">
               <span class="album-no">P.02</span>
-              <div class="cover-title">Estatística<em>before the dashboard</em></div>
+              <div class="cover-title">AquaTech<em>signals before the flood</em></div>
             </div>
-            <h3>Estatística em Python</h3>
-            <p>Notebooks com visualização, probabilidade e regressão linear. A parte menos performática e mais útil da análise: entender o comportamento do dado antes de contar história com ele.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">Regressão</span><span class="tag">Visualização</span>
-            </div>
-            <div class="album-actions">
-              <a class="text-link" href="https://github.com/Muriiloedu/EstatisticaPython" target="_blank" rel="noopener noreferrer">estudos ↗</a>
-              <button class="liner-btn project-open" data-project="stats">abrir encarte</button>
-            </div>
-          </article>
-
-          <article class="album-card full">
-            <div class="cover gold">
-              <span class="album-no">P.03</span>
-              <div class="cover-title">AquaTech Code<em>signals before the flood</em></div>
-            </div>
-            <h3>Sistema de Alerta de Enchentes</h3>
-            <p>Sistema inteligente para monitorar o nível da água em áreas de risco de Sorocaba utilizando sensores e ESP32, com foco na identificação de níveis críticos e apoio a alertas em tempo real.</p>
+            <h3>AquaTech Code</h3>
+            <p>Sistema de alerta de enchentes para Sorocaba com ESP32 e sensores, pensado para identificar níveis críticos da água e apoiar alertas preventivos em tempo real.</p>
             <div class="tags">
               <span class="tag">ESP32</span><span class="tag">IoT</span><span class="tag">Sensores</span><span class="tag">Tempo real</span>
             </div>
             <div class="album-actions">
+              <a class="text-link" href="https://www.linkedin.com/posts/muriloeduardolima_sorocaba-enchentes-prevenaexaetodeacidentes-ugcPost-7203812532346642434-osrd/" target="_blank" rel="noopener noreferrer">publicação ↗</a>
               <button class="liner-btn project-open" data-project="aqua">abrir encarte</button>
+            </div>
+          </article>
+
+          <article class="album-card">
+            <div class="cover gold">
+              <span class="album-no">P.03</span>
+              <div class="cover-title">KomunityON<em>digital citizenship</em></div>
+            </div>
+            <h3>KomunityON — Ouvidoria Pública Digital</h3>
+            <p>Projeto acadêmico de ouvidoria pública colaborativa, com registro e acompanhamento de demandas, foco em transparência, participação cidadã, governança digital e cidades mais conectadas.</p>
+            <div class="tags">
+              <span class="tag">Java</span><span class="tag">Banco de Dados</span><span class="tag">Governança</span><span class="tag">ODS</span>
+            </div>
+            <div class="album-actions">
+              <a class="text-link" href="https://www.linkedin.com/posts/muriloeduardolima_inovaaexaeto-ouvidoriadigital-cidadania-ugcPost-7337205504605106176-6voq/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+              <a class="text-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7272224482763689984/" target="_blank" rel="noopener noreferrer">publicação relacionada ↗</a>
+              <button class="liner-btn project-open" data-project="komunity">abrir encarte</button>
+            </div>
+          </article>
+
+          <article class="album-card">
+            <div class="cover">
+              <span class="album-no">P.04</span>
+              <div class="cover-title">Statistics<em>before the dashboard</em></div>
+            </div>
+            <h3>Estatística em Python</h3>
+            <p>Notebooks com visualização, probabilidade e regressão linear. Estudos para fortalecer interpretação estatística antes da camada de BI e apresentação.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">Regressão</span><span class="tag">Visualização</span>
+            </div>
+            <div class="album-actions">
+              <a class="text-link" href="https://github.com/Muriiloedu/EstatisticaPython" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <button class="liner-btn project-open" data-project="stats">abrir encarte</button>
+            </div>
+          </article>
+
+          <article class="album-card">
+            <div class="cover paper">
+              <span class="album-no">P.05</span>
+              <div class="cover-title">KINTO Lab<em>mobility portal concept</em></div>
+            </div>
+            <h3>KINTO Lab / Portal Mobility</h3>
+            <p>Protótipo desenvolvido em contexto de laboratório/workshop: catálogo e disponibilidade, planos, simulação, mapa do Brasil com dealers, reservas e exploração de integrações e deploy.</p>
+            <div class="tags">
+              <span class="tag">Portal</span><span class="tag">API</span><span class="tag">Trello</span><span class="tag">Docker</span><span class="tag">UX</span>
+            </div>
+            <div class="album-actions">
+              <button class="liner-btn project-open" data-project="kinto">abrir encarte</button>
+            </div>
+          </article>
+
+          <article class="album-card">
+            <div class="cover gold">
+              <span class="album-no">P.06</span>
+              <div class="cover-title">Pentest Labs<em>break it to understand it</em></div>
+            </div>
+            <h3>Cybersecurity / Pentest Labs</h3>
+            <p>Práticas acadêmicas de reconhecimento, exploração e análise de vulnerabilidades em ambientes controlados, reforçando pensamento ofensivo e segurança no desenvolvimento.</p>
+            <div class="tags">
+              <span class="tag">Pentest</span><span class="tag">Recon</span><span class="tag">CTF</span><span class="tag">Segurança</span>
+            </div>
+            <div class="album-actions">
+              <button class="liner-btn project-open" data-project="pentest">abrir encarte</button>
             </div>
           </article>
         </div>
@@ -862,33 +1012,98 @@
     <section class="section reveal" id="cultura">
       <div class="shell">
         <div class="section-head">
-          <div class="kicker">05 / Cultura</div>
-          <h2>Nem tudo cabe <span class="hand">numa planilha.</span></h2>
+          <div class="kicker">05 / Acervo</div>
+          <h2>Um sebo de <span class="hand">coisas que me formaram.</span></h2>
         </div>
 
-        <div class="culture-room">
-          <div class="culture-copy">
-            <h3>the record room.</h3>
-            <p>Rap, cultura negra, arte urbana, basquete, música e tecnologia entram aqui como parte da minha identidade — não como uma lista de hobbies escondida depois do currículo.</p>
+        <div class="archive-intro">
+          <p>Projetos, certificados e referências pessoais no mesmo caixote. Como num sebo de vinil: você puxa uma capa, coloca o disco para tocar e descobre um pedaço diferente da história.</p>
+        </div>
+
+        <div class="crate-controls" role="group" aria-label="Filtrar acervo">
+          <button class="crate-filter active" data-filter="all">Tudo</button>
+          <button class="crate-filter" data-filter="project">Projetos</button>
+          <button class="crate-filter" data-filter="certificate">Certificados</button>
+          <button class="crate-filter" data-filter="culture">Cultura & hobbies</button>
+        </div>
+
+        <div class="crate-layout">
+          <div class="vinyl-crate" aria-label="Caixote interativo de vinis">
+            <div class="crate-label">MEL. RECORDS / USED & LOVED</div>
+            <div class="crate-records">
+              <button class="crate-sleeve sleeve-wine active" data-type="project" data-record="condolives"><span>CondoLives</span><small>project 01</small></button>
+              <button class="crate-sleeve sleeve-paper" data-type="project" data-record="aquatech"><span>AquaTech</span><small>project 02</small></button>
+              <button class="crate-sleeve sleeve-gold" data-type="project" data-record="kinto"><span>KINTO Lab</span><small>project 03</small></button>
+              <button class="crate-sleeve sleeve-dark" data-type="project" data-record="komunity"><span>KomunityON</span><small>project 04</small></button>
+              <button class="crate-sleeve sleeve-paper" data-type="project" data-record="stats"><span>Statistics</span><small>project 05</small></button>
+              <button class="crate-sleeve sleeve-wine" data-type="project" data-record="pentest"><span>Pentest</span><small>project 06</small></button>
+
+              <button class="crate-sleeve sleeve-gold" data-type="certificate" data-record="googlepm"><span>Google PM</span><small>certificate</small></button>
+              <button class="crate-sleeve sleeve-dark" data-type="certificate" data-record="ia900"><span>IA-900</span><small>certificate</small></button>
+              <button class="crate-sleeve sleeve-paper" data-type="certificate" data-record="excel"><span>Excel</span><small>certificate</small></button>
+              <button class="crate-sleeve sleeve-wine" data-type="certificate" data-record="scrum"><span>Scrum</span><small>certificate</small></button>
+
+              <button class="crate-sleeve sleeve-dark" data-type="culture" data-record="rap"><span>Rap</span><small>side A</small></button>
+              <button class="crate-sleeve sleeve-gold" data-type="culture" data-record="basket"><span>Basket</span><small>side B</small></button>
+              <button class="crate-sleeve sleeve-paper" data-type="culture" data-record="reading"><span>Leitura</span><small>side C</small></button>
+              <button class="crate-sleeve sleeve-wine" data-type="culture" data-record="games"><span>Games</span><small>side D</small></button>
+            </div>
           </div>
 
-          <div class="store-grid">
-            <div class="store" aria-label="Prateleira interativa de discos">
-              <div class="culture-records">
-                <button class="culture-sleeve active" data-culture="music">música</button>
-                <button class="culture-sleeve" data-culture="culture">cultura</button>
-                <button class="culture-sleeve" data-culture="basket">basquete</button>
-                <button class="culture-sleeve" data-culture="tech">tecnologia</button>
-                <button class="culture-sleeve" data-culture="vision">visão</button>
+          <div class="listening-station">
+            <div class="turntable">
+              <div class="turntable-brand">MEL / PLAYER 01</div>
+              <div class="platter">
+                <div class="playing-record" id="playingRecord">
+                  <div class="record-label" id="recordLabel">CondoLives</div>
+                </div>
+              </div>
+              <div class="tonearm" aria-hidden="true">
+                <div class="tonearm-base"></div>
+                <div class="tonearm-stick"></div>
+                <div class="tonearm-head"></div>
               </div>
             </div>
 
-            <article class="culture-card" id="cultureCard">
-              <div class="track">now playing / track 01</div>
-              <h4>Música.</h4>
-              <p>Rap é uma referência central no meu repertório. Gosto de narrativa, camada, contexto, sample e identidade. Esse jeito de juntar peças diferentes também aparece em como penso projetos e dados.</p>
+            <article class="now-playing" id="nowPlaying">
+              <div class="track">now playing / project 01</div>
+              <h3>CondoLives.</h3>
+              <p>Gestão condominial, dados, solicitações, dashboards e evolução de produto.</p>
+              <a href="https://www.linkedin.com/posts/muriloeduardolima_inovaaexaeto-gestaetocondominial-tecnologia-ugcPost-7396604092036399105-syl_/" target="_blank" rel="noopener noreferrer">abrir referência ↗</a>
             </article>
           </div>
+        </div>
+
+        <div class="dj-stage">
+          <div class="stage-copy">
+            <span>live set / currently spinning</span>
+            <strong id="djNow">CondoLives</strong>
+          </div>
+
+          <svg class="dj-illustration" viewBox="0 0 920 300" role="img" aria-label="Ilustração original de DJ tocando um set para um pequeno grupo">
+            <rect x="0" y="238" width="920" height="62" fill="#130b10"/>
+            <rect x="294" y="166" width="332" height="74" rx="8" fill="#1a0e14" stroke="#d1ad62" stroke-width="3"/>
+            <circle cx="369" cy="203" r="44" fill="#0d080b" stroke="#d1ad62" stroke-width="4"/>
+            <circle cx="369" cy="203" r="13" fill="#5f1730" stroke="#f4efe8" stroke-width="3"/>
+            <circle cx="551" cy="203" r="44" fill="#0d080b" stroke="#d1ad62" stroke-width="4"/>
+            <circle cx="551" cy="203" r="13" fill="#5f1730" stroke="#f4efe8" stroke-width="3"/>
+            <rect x="443" y="181" width="34" height="45" rx="4" fill="#d1ad62"/>
+            <circle cx="460" cy="103" r="35" fill="#f4efe8" stroke="#5f1730" stroke-width="5"/>
+            <path d="M416 158 Q460 126 504 158 L493 194 L427 194 Z" fill="#5f1730" stroke="#d1ad62" stroke-width="3"/>
+            <path d="M434 112 Q460 84 486 112" fill="none" stroke="#0d080b" stroke-width="7" stroke-linecap="round"/>
+            <path d="M421 157 L391 194 M499 157 L529 194" stroke="#f4efe8" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="133" cy="178" r="29" fill="#5f1730" stroke="#d1ad62" stroke-width="3"/>
+            <path d="M94 240 Q133 190 172 240" fill="#21131b"/>
+            <circle cx="218" cy="167" r="25" fill="#d1ad62" stroke="#5f1730" stroke-width="3"/>
+            <path d="M184 240 Q218 193 252 240" fill="#3b0d1e"/>
+            <circle cx="704" cy="174" r="28" fill="#f4efe8" stroke="#5f1730" stroke-width="3"/>
+            <path d="M665 240 Q704 191 743 240" fill="#5f1730"/>
+            <circle cx="794" cy="164" r="24" fill="#5f1730" stroke="#d1ad62" stroke-width="3"/>
+            <path d="M761 240 Q794 194 827 240" fill="#21131b"/>
+            <path d="M111 142 Q132 118 151 143 M681 139 Q705 113 727 141 M775 131 Q796 111 816 132" fill="none" stroke="#f4efe8" stroke-width="5" stroke-linecap="round"/>
+            <text x="33" y="55" fill="#d1ad62" font-family="DM Mono, monospace" font-size="16">DATA / RAP / CULTURE / PROCESS</text>
+            <path d="M42 77 C150 38 189 98 270 62 S418 28 501 70 S681 97 855 44" fill="none" stroke="#5f1730" stroke-width="5" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
     </section>
@@ -958,9 +1173,12 @@
         <section class="quick-card">
           <h3>Projetos</h3>
           <ul>
-            <li>CommunityON</li>
-            <li>Estatística em Python</li>
+            <li>CondoLives / CommunityON</li>
             <li>AquaTech Code</li>
+            <li>KomunityON</li>
+            <li>Estatística em Python</li>
+            <li>KINTO Lab / Portal Mobility</li>
+            <li>Cybersecurity / Pentest Labs</li>
           </ul>
         </section>
 
@@ -1020,13 +1238,11 @@
 
     const jobButtons = document.querySelectorAll(".job-sleeve");
     const jobNotes = document.getElementById("jobNotes");
-
     jobButtons.forEach(function(button){
       button.addEventListener("click", function(){
         jobButtons.forEach(function(item){ item.classList.remove("active"); });
         button.classList.add("active");
         const item = jobData[button.dataset.job];
-
         jobNotes.innerHTML =
           '<div class="liner-track">' + item.track + '</div>' +
           '<h3>' + item.title + '</h3>' +
@@ -1036,61 +1252,30 @@
       });
     });
 
-    const cultureData = {
-      music: {
-        track:"now playing / track 01",
-        title:"Música.",
-        text:"Rap é uma referência central no meu repertório. Gosto de narrativa, camada, contexto, sample e identidade. Esse jeito de juntar peças diferentes também aparece em como penso projetos e dados."
-      },
-      culture: {
-        track:"now playing / track 02",
-        title:"Cultura.",
-        text:"Cultura negra e arte urbana me interessam porque carregam história, linguagem e identidade. A estética deste portfólio assume isso sem reproduzir uma obra específica de outro artista."
-      },
-      basket: {
-        track:"now playing / track 03",
-        title:"Basquete.",
-        text:"Basquete é leitura de espaço, ritmo, adaptação e decisão rápida. Fora da quadra, continuo gostando desse mesmo tipo de raciocínio quando estou resolvendo problema."
-      },
-      tech: {
-        track:"now playing / track 04",
-        title:"Tecnologia.",
-        text:"Python, SQL, automação, IA e desenvolvimento são ferramentas. O que me interessa mesmo é usar tecnologia para organizar processo, reduzir retrabalho e gerar valor."
-      },
-      vision: {
-        track:"now playing / track 05",
-        title:"Visão.",
-        text:"Quero crescer em dados sem perder repertório cultural, comunicação e personalidade. Profissional bom não precisa parecer um dashboard ambulante."
-      }
-    };
-
-    const cultureButtons = document.querySelectorAll(".culture-sleeve");
-    const cultureCard = document.getElementById("cultureCard");
-
-    cultureButtons.forEach(function(button){
-      button.addEventListener("click", function(){
-        cultureButtons.forEach(function(item){ item.classList.remove("active"); });
-        button.classList.add("active");
-        const item = cultureData[button.dataset.culture];
-        cultureCard.innerHTML =
-          '<div class="track">' + item.track + '</div>' +
-          '<h4>' + item.title + '</h4>' +
-          '<p>' + item.text + '</p>';
-      });
-    });
-
     const projectData = {
-      community:{
-        title:"CommunityON",
-        html:"<p>Plataforma web desenvolvida para centralizar a comunicação e a gestão de solicitações em condomínios.</p><ul><li>Registro e acompanhamento de demandas.</li><li>Indicadores, dashboards e relatórios para apoiar a administração.</li><li>Maior rastreabilidade das solicitações.</li><li>Redução da dependência de e-mails, WhatsApp e planilhas paralelas.</li></ul>"
+      condolives:{
+        title:"CondoLives / CommunityON",
+        html:"<p>Evolução de uma solução de gestão e ouvidoria condominial orientada a dados.</p><ul><li>Solicitações e acompanhamento de demandas.</li><li>Dashboards, indicadores e relatórios.</li><li>Reservas e funcionalidades de convivência.</li><li>Validação de interface e evolução do produto ao longo dos semestres.</li></ul>"
+      },
+      aqua:{
+        title:"AquaTech Code",
+        html:"<p>Sistema inteligente para monitorar o nível da água em áreas de risco de Sorocaba.</p><ul><li>ESP32 e sensores.</li><li>Monitoramento em tempo real.</li><li>Identificação de níveis críticos.</li><li>Aplicação de tecnologia em prevenção de desastres.</li></ul>"
+      },
+      komunity:{
+        title:"KomunityON",
+        html:"<p>Ouvidoria pública digital colaborativa criada em contexto acadêmico.</p><ul><li>Registro de sugestões e demandas.</li><li>Acompanhamento das solicitações.</li><li>Foco em transparência e participação cidadã.</li><li>Java, banco de dados, governança digital e ODS.</li></ul>"
       },
       stats:{
         title:"Estatística em Python",
         html:"<p>Estudos práticos em Python e Jupyter Notebook para desenvolver base analítica antes da camada de BI.</p><ul><li>Visualização de dados.</li><li>Probabilidade.</li><li>Regressão linear.</li><li>Interpretação estatística.</li></ul>"
       },
-      aqua:{
-        title:"AquaTech Code",
-        html:"<p>Sistema inteligente para monitorar o nível da água em áreas de risco de Sorocaba.</p><ul><li>ESP32 e sensores.</li><li>Monitoramento em tempo real.</li><li>Identificação de aumentos críticos.</li><li>Tecnologia aplicada à prevenção de desastres.</li></ul>"
+      kinto:{
+        title:"KINTO Lab / Portal Mobility",
+        html:"<p>Protótipo desenvolvido em contexto de laboratório/workshop e portfólio, usando dados demonstrativos.</p><ul><li>Catálogo, planos e disponibilidade.</li><li>Simulação de uso/preços.</li><li>Mapa do Brasil com dealers e redirecionamento para atendimento.</li><li>Exploração de API Trello e deploy com Docker.</li></ul><p><strong>Nota:</strong> apresentação de portfólio/laboratório, não um produto oficial de produção.</p>"
+      },
+      pentest:{
+        title:"Cybersecurity / Pentest Labs",
+        html:"<p>Práticas acadêmicas de segurança ofensiva em ambientes controlados.</p><ul><li>Reconhecimento e enumeração.</li><li>Exploração orientada a laboratório.</li><li>CTFs e plataformas educacionais.</li><li>Visão de segurança aplicada ao desenvolvimento.</li></ul>"
       }
     };
 
@@ -1103,9 +1288,65 @@
         dialog.showModal();
       });
     });
-
     document.getElementById("closeProject").addEventListener("click",function(){ dialog.close(); });
     dialog.addEventListener("click",function(e){ if(e.target === dialog) dialog.close(); });
+
+    const crateData = {
+      condolives:{type:"project",track:"project 01",title:"CondoLives.",label:"CondoLives",text:"Gestão condominial, dados, solicitações, dashboards e evolução de produto.",link:"https://www.linkedin.com/posts/muriloeduardolima_inovaaexaeto-gestaetocondominial-tecnologia-ugcPost-7396604092036399105-syl_/"},
+      aquatech:{type:"project",track:"project 02",title:"AquaTech Code.",label:"AquaTech",text:"ESP32, sensores e monitoramento para prevenção e alerta de enchentes em Sorocaba.",link:"https://www.linkedin.com/posts/muriloeduardolima_sorocaba-enchentes-prevenaexaetodeacidentes-ugcPost-7203812532346642434-osrd/"},
+      kinto:{type:"project",track:"project 03",title:"KINTO Lab.",label:"KINTO Lab",text:"Portal Mobility de laboratório: catálogo, planos, simulação, dealers, reservas e integrações.",link:""},
+      komunity:{type:"project",track:"project 04",title:"KomunityON.",label:"KomunityON",text:"Ouvidoria pública digital com transparência, participação cidadã e governança.",link:"https://www.linkedin.com/posts/muriloeduardolima_inovaaexaeto-ouvidoriadigital-cidadania-ugcPost-7337205504605106176-6voq/"},
+      stats:{type:"project",track:"project 05",title:"Estatística.",label:"Statistics",text:"Visualização, probabilidade e regressão linear com Python e Jupyter.",link:"https://github.com/Muriiloedu/EstatisticaPython"},
+      pentest:{type:"project",track:"project 06",title:"Pentest Labs.",label:"Pentest",text:"Reconhecimento, exploração e segurança ofensiva em ambientes educacionais controlados.",link:""},
+      googlepm:{type:"certificate",track:"certificate 01",title:"Google PM.",label:"Google PM",text:"Certificado Profissional Google em Gerenciamento de Projetos, via Coursera.",link:""},
+      ia900:{type:"certificate",track:"certificate 02",title:"IA-900.",label:"IA-900",text:"Fundamentos de Inteligência Artificial no Azure, Fundação Bradesco.",link:""},
+      excel:{type:"certificate",track:"certificate 03",title:"Excel.",label:"Excel",text:"Excel Avançado (Udemy) e Excel Intermediário (Santander Avançar).",link:""},
+      scrum:{type:"certificate",track:"certificate 04",title:"Scrum.",label:"Scrum",text:"Introdução ao Scrum pela FGV, somando repertório ágil à formação técnica.",link:""},
+      rap:{type:"culture",track:"side A / culture",title:"Rap.",label:"RAP",text:"Narrativa, estética, contexto e identidade. Uma das referências centrais do meu repertório.",link:""},
+      basket:{type:"culture",track:"side B / culture",title:"Basquete.",label:"BASKET",text:"Leitura de espaço, ritmo, decisão rápida e adaptação. Na quadra e fora dela.",link:""},
+      reading:{type:"culture",track:"side C / culture",title:"Leitura.",label:"READING",text:"Um jeito de ampliar repertório, organizar ideias e continuar aprendendo fora da tela.",link:""},
+      games:{type:"culture",track:"side D / culture",title:"Videogames.",label:"GAMES",text:"Sistemas, narrativa, exploração e diversão. Também é onde tecnologia encontra experiência.",link:""}
+    };
+
+    const crateSleeves = document.querySelectorAll(".crate-sleeve");
+    const crateFilters = document.querySelectorAll(".crate-filter");
+    const recordLabel = document.getElementById("recordLabel");
+    const playingRecord = document.getElementById("playingRecord");
+    const nowPlaying = document.getElementById("nowPlaying");
+    const djNow = document.getElementById("djNow");
+
+    function playRecord(key){
+      const item = crateData[key];
+      if(!item) return;
+      crateSleeves.forEach(function(s){ s.classList.toggle("active",s.dataset.record === key); });
+      recordLabel.textContent = item.label;
+      djNow.textContent = item.label;
+      playingRecord.classList.remove("switching");
+      void playingRecord.offsetWidth;
+      playingRecord.classList.add("switching");
+      nowPlaying.innerHTML =
+        '<div class="track">now playing / ' + item.track + '</div>' +
+        '<h3>' + item.title + '</h3>' +
+        '<p>' + item.text + '</p>' +
+        (item.link ? '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer">abrir referência ↗</a>' : '');
+    }
+
+    crateSleeves.forEach(function(sleeve){
+      sleeve.addEventListener("click",function(){ playRecord(sleeve.dataset.record); });
+    });
+
+    crateFilters.forEach(function(filter){
+      filter.addEventListener("click",function(){
+        crateFilters.forEach(function(btn){ btn.classList.remove("active"); });
+        filter.classList.add("active");
+        const value = filter.dataset.filter;
+        crateSleeves.forEach(function(sleeve){
+          sleeve.classList.toggle("filtered-out", value !== "all" && sleeve.dataset.type !== value);
+        });
+        const firstVisible = Array.from(crateSleeves).find(function(s){ return !s.classList.contains("filtered-out"); });
+        if(firstVisible) playRecord(firstVisible.dataset.record);
+      });
+    });
 
     const quickMode = document.getElementById("quickMode");
     const openQuick = document.getElementById("openQuick");
@@ -1116,7 +1357,6 @@
       quickMode.setAttribute("aria-hidden","false");
       document.body.style.overflow="hidden";
     });
-
     closeQuick.addEventListener("click",function(){
       quickMode.classList.remove("open");
       quickMode.setAttribute("aria-hidden","true");
@@ -1132,7 +1372,6 @@
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealItems = document.querySelectorAll(".reveal");
-
     if(reduceMotion || !("IntersectionObserver" in window)){
       revealItems.forEach(function(item){ item.classList.add("visible"); });
     } else {
@@ -1144,7 +1383,6 @@
           }
         });
       },{threshold:.12});
-
       revealItems.forEach(function(item){ observer.observe(item); });
     }
   </script>
